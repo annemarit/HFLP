@@ -1,0 +1,372 @@
+!Case
+model HospitalPlanning
+
+options explterm
+options noimplicit
+
+uses "mmxprs";
+uses "mmsystem";
+
+parameters
+	DataFile      = 'datafil_case1.txt';
+	ConfFile      = 'Configs_case.txt';
+	ProximityFile = 'Proximity_case.txt';
+end-parameters
+
+declarations
+	starttime:   real;
+	endtime:     real;
+	usedtime:    real;
+end-declarations
+
+!Declaring the sizes of the sets
+declarations
+	niLocations:        integer;	
+	njLocations:        integer;	
+	nFunctions:         integer;
+	nConfigurations:    integer;
+	nPerspectives:      integer;
+	nMaxSize:           integer;
+end-declarations
+
+!Initializing the sizes of the sets
+initializations from DataFile
+	niLocations;	
+	njLocations;	
+	nFunctions;
+	nConfigurations;
+	nPerspectives;
+end-initializations
+
+!Configs
+initializations from ConfFile
+	nMaxSize;
+end-initializations
+
+!Declaring the sets
+declarations
+	iLocations:                 set of integer;	
+	jLocations:                 set of integer;	
+	ArtificialiLocations:       set of integer;	
+	ArtificialjLocations:       set of integer;	
+	Functions:                  set of integer;
+	Configurations:             set of integer;
+	Size:                       set of integer;
+	Perspectives:               set of integer;
+end-declarations
+
+!Assigning values to the sets
+iLocations                  :=  1 .. niLocations;
+jLocations                  :=  1 .. njLocations;
+ArtificialiLocations        := -2 .. niLocations + 3;
+ArtificialjLocations        := -2 .. njLocations + 3;
+Functions                   :=  1 .. nFunctions;
+Configurations              :=  1 .. nConfigurations;
+Perspectives                :=  1 .. nPerspectives;
+Size                        :=	1 .. nMaxSize;
+
+finalize(Size);
+
+!Declaring configurations
+declarations
+	Conf = record
+		ii : dynamic array(Size) of integer;
+		jj : dynamic array(Size) of integer;
+	end-record;
+	Configs: dynamic array(Size, integer) of Conf;
+end-declarations
+
+initializations from ConfFile
+	Configs;
+end-initializations
+
+!Declaring the parameters
+declarations
+	Distance:               dynamic array(iLocations, jLocations, iLocations, jLocations)   of integer;
+	Proximity:              dynamic array(Perspectives, Functions, Functions)               of integer;
+	SizeFunction:           array(Functions)                                                of integer;
+	ConfigurationCount:     array(Size)                                                     of integer;
+	LockVariable:           dynamic array(Functions, iLocations, jLocations)                of integer;
+	LockCoverVariable:      dynamic array(Functions, iLocations, jLocations)                of integer;
+	Weights:                array(Perspectives)                                             of real;
+	Footprint:              array(jLocations, iLocations)                                   of integer;
+end-declarations
+
+!Initializing the parameters
+initializations from DataFile
+	SizeFunction;
+	ConfigurationCount;
+	LockVariable;
+	LockCoverVariable;
+	Weights;
+	Footprint;
+end-initializations
+
+initializations from ProximityFile
+	Proximity;
+end-initializations
+
+!Declaring the subsets of functions (sizes of the functions and configurations of functions
+declarations
+	FunctionSize:               dynamic array(Size)         of set of integer;
+	FunctionConfiguration:      dynamic array(Functions)    of set of integer;
+end-declarations
+
+!Creating Distances
+forall(ii in iLocations, jj in jLocations) do
+	forall (kk in iLocations, ll in jLocations) do
+		Distance(ii,jj,kk,ll) := abs(kk-ii) + abs(ll-jj);
+	end-do
+end-do
+
+!Creating FunctionSize
+forall(ss in Size) do
+	forall(ff in Functions) do
+		if (SizeFunction(ff)=ss) then
+			FunctionSize(ss) += {ff};
+		end-if
+	end-do
+end-do
+
+!Creating FunctionConfiguration
+forall(ff in Functions) do
+	forall(mm in 1..ConfigurationCount(SizeFunction(ff))) do
+		FunctionConfiguration(ff) += {mm};
+	end-do
+end-do
+
+!Declaring UsedSquares (marks the squares that need to be covered when a centre node with a given configuration is placed)
+declarations
+	UsedSquares:         dynamic array(Size, Configurations, ArtificialiLocations,
+                         ArtificialjLocations, ArtificialiLocations, ArtificialjLocations)  of integer;
+end-declarations
+
+!Creating UsedSquares for sizes ss and configurations mm
+forall (ss in Size, cc in 1..getsize(Configs) | exists(Configs(ss,cc))) do
+	forall (qq in Size | exists(Configs(ss,cc).ii(qq))) do
+		forall (ii in iLocations, jj in jLocations) do
+			UsedSquares(ss, cc, ii, jj, ii + Configs(ss,cc).ii(qq), jj + Configs(ss,cc).jj(qq)) := 1;
+		end-do
+	end-do
+end-do
+
+!Declaring AllowedPlacement (on which locations (i,j) on the grid different configurations m of sizes s can be placed)
+declarations
+	AllowedPlacement:       dynamic array(Size, Configurations, iLocations, jLocations)     of integer;
+	AllowedConfig:          dynamic array(Functions, Configurations)                        of integer;
+end-declarations
+
+initializations from DataFile
+	AllowedConfig;
+end-initializations
+
+!Creating AllowedPlacement. AllowedPlacement(ss,mm,ii,jj) is equal to 1 if the function can be placed there.
+forall (ss in Size, mm in 1..ConfigurationCount(ss)) do
+	forall (ii in iLocations, jj in jLocations) do
+		AllowedPlacement(ss,mm,ii,jj) := 1;
+		forall(kk in (ii-2)..(ii+2), ll in (jj-2)..(jj+2)) do
+			if (UsedSquares(ss,mm,ii,jj,kk,ll) = 1) then
+				if (kk < 1 or kk > niLocations or ll < 1 or ll > njLocations) then
+					AllowedPlacement(ss,mm,ii,jj) := 0;
+				end-if
+			end-if
+		end-do
+	end-do
+end-do
+
+!Writing out the size of each function
+writeln(' ');
+writeln('The grid is of size ixj: ' + niLocations + 'x' + njLocations);
+writeln(' ');
+writeln("----------------------------------------------------------------------");
+!writeln(' ');
+!writeln('Function | Size');
+!forall (ff in Functions) do
+!	writeln('   ' + ff + '         ' + SizeFunction(ff));
+!end-do
+writeln(' ');
+
+!Declaring the variables
+declarations
+	centrePlacement:    dynamic array(Functions, ArtificialiLocations, ArtificialjLocations, Configurations) of mpvar; !x
+	centrePlacement2:   dynamic array(Functions, ArtificialiLocations, ArtificialjLocations)                 of mpvar; !w
+	elementCovered:     dynamic array(Functions, ArtificialiLocations, ArtificialjLocations)                 of mpvar; !v
+	relationPlacement:  dynamic array(Functions, ArtificialiLocations, ArtificialjLocations, Functions,
+                        ArtificialiLocations, ArtificialjLocations)                                          of mpvar; !y
+	temp:               integer;
+end-declarations
+
+!Creating x_fijm
+forall (ff in Functions, ii in iLocations, jj in jLocations, mm in FunctionConfiguration(ff)) do
+	if (AllowedPlacement(SizeFunction(ff),mm,ii,jj)=1 and AllowedConfig(ff,mm)=1 and Footprint(jj,ii)=1) then
+		create(centrePlacement(ff, ii, jj, mm));
+		centrePlacement(ff,ii,jj,mm) is_binary;
+	end-if												
+end-do
+
+!Creating the binary variables v_fij and w_fij
+forall (ff in Functions, ii in iLocations, jj in jLocations) do
+	if (Footprint(jj,ii)=1) then
+		!Creating v_fij
+		create(elementCovered(ff, ii, jj));		
+		elementCovered(ff,ii,jj) is_binary;
+		if (LockCoverVariable(ff,ii,jj)=1) then
+			elementCovered(ff,ii,jj)>=1;
+		end-if
+		!Creating w_fij
+		create(centrePlacement2(ff, ii, jj));
+		centrePlacement2(ff,ii,jj) is_binary;
+		!Locking centre variables to specific locations
+		if (LockVariable(ff,ii,jj)=1) then
+			centrePlacement2(ff,ii,jj) >= 1.0;
+		end-if	
+	end-if
+end-do
+
+!Creating the binary variable y_fijgkl
+forall (ff in Functions, ii in iLocations, jj in jLocations, gg in Functions, kk in iLocations,
+		ll in jLocations | exists(centrePlacement2(ff, ii, jj)) and exists(centrePlacement2(gg, kk, ll))) do
+	if (ff<gg) then
+		if (ii=kk and jj = ll) then
+			temp:=0; !do nothing
+		else
+			create(relationPlacement(ff, ii, jj, gg, kk, ll));
+			relationPlacement(ff,ii,jj,gg,kk,ll) is_binary;
+		end-if
+	end-if
+end-do
+
+!CentrePlacementBlock tells which locations of the grid the centre of a function can be placed to cover a location (i,j) on the grid
+declarations
+	CentrePlacementBlock:   dynamic array(Functions, iLocations, jLocations, Configurations,
+                                          ArtificialiLocations, ArtificialjLocations)           of integer;
+end-declarations
+
+!Creating CentrePlacementBlock for sizes ss and configurations mm
+forall (ff in Functions) do
+    forall (ii in iLocations, jj in jLocations) do      
+		forall (cc in 1..getsize(Configs) | exists(Configs(SizeFunction(ff),cc)) and cc in FunctionConfiguration(ff)) do
+			forall (qq in Size | exists(Configs(SizeFunction(ff),cc).ii(qq))) do
+				CentrePlacementBlock(ff,ii,jj,cc,ii-Configs(SizeFunction(ff),cc).ii(qq),jj-Configs(SizeFunction(ff),cc).jj(qq)):=1;
+			end-do
+		end-do
+	end-do
+end-do
+
+!Declaration the objective function and constraints
+declarations
+	TotalDistanceProximity:     linctr;
+	helpCon:                    dynamic array(Functions, iLocations, jLocations)        of linctr;
+	nonOverlapCon:              dynamic array(iLocations, jLocations)                   of linctr;
+	allFunctionsPlacedCon:      dynamic array(Functions)                                of linctr;
+	linearizationCon:           dynamic array(Functions, iLocations, jLocations,
+	                            Functions, iLocations, jLocations)                      of linctr;
+	yLimitCon:                  dynamic array(Functions, Functions)                     of linctr;
+	centrePlacementCon:	        dynamic array(Functions, iLocations, jLocations)        of linctr;
+end-declarations
+
+!Objective function
+TotalDistanceProximity :=
+	sum (ff in Functions, gg in Functions, ii in iLocations, jj in jLocations, kk in iLocations, ll in jLocations,
+		pp in Perspectives | gg > ff)
+		Weights(pp) * Proximity(pp, ff, gg) * Distance(ii, jj, kk, ll) * relationPlacement(ff, ii, jj, gg, kk, ll);
+
+!Constraint (2)
+forall (ff in Functions, ii in iLocations, jj in jLocations) do
+	helpCon(ff, ii, jj) :=
+		sum(mm in Configurations) centrePlacement(ff,ii,jj,mm) - centrePlacement2(ff,ii,jj) = 0.0;
+end-do
+
+!Constraint (3)
+forall (ii in iLocations, jj in jLocations) do
+	nonOverlapCon(ii, jj) :=
+		sum(ff in Functions) elementCovered(ff,ii,jj) <= 1.0;
+end-do
+
+!Constraint (4)
+forall (ff in Functions) do
+	allFunctionsPlacedCon(ff) :=
+		sum(ii in iLocations, jj in jLocations) centrePlacement2(ff, ii, jj) = 1.0;
+end-do
+
+!Constraint (5)
+forall (ff in Functions, ii in iLocations, jj in jLocations, gg in Functions, kk in iLocations, ll in jLocations | 
+		ff < gg and exists(relationPlacement(ff, ii, jj, gg, kk, ll))) do
+	linearizationCon(ff, ii, jj, gg, kk, ll) :=
+		centrePlacement2(ff, ii, jj) + centrePlacement2(gg, kk, ll) - relationPlacement(ff, ii, jj, gg, kk, ll) <= 1.0;
+end-do
+
+!Constraint (6)
+forall (ff in Functions, gg in Functions | ff<gg and ff<>gg) do! and exists(relationPlacement(ff, ii, jj, gg, kk, ll))) do
+	yLimitCon(ff, gg) :=
+		sum(ii in iLocations, jj in jLocations, kk in iLocations, ll in jLocations) relationPlacement(ff, ii, jj, gg, kk, ll) = 1.0;
+end-do
+
+!Constraint (8)
+forall(ff in Functions, ii in iLocations, jj in jLocations) do
+	centrePlacementCon(ff,ii,jj) :=
+		sum(mm in FunctionConfiguration(ff), aa in ii-2..ii+2, bb in jj-2..jj+2 | CentrePlacementBlock(ff,ii,jj,mm,aa,bb) = 1)
+		centrePlacement(ff, aa, bb, mm) = elementCovered(ff, ii, jj);
+end-do
+
+starttime := gettime;
+
+!Minimizes the function
+minimize(TotalDistanceProximity);
+
+endtime := gettime;
+
+usedtime := endtime - starttime;
+
+writeln(' Run time: ' + usedtime);
+
+!Writes functions with configurations that are placed in coordinate (i,j)
+writeln("----------------------------------------------------------------------");
+writeln(" Objective value: ", getobjval);
+writeln("----------------------------------------------------------------------");
+writeln("");
+writeln("The following functions are placed on the grid:");
+writeln("");
+forall(ff in Functions, ii in iLocations, jj in jLocations, mm in Configurations) do
+	if (getsol(centrePlacement(ff, ii, jj, mm)) = 1) then
+		writeln("The centre of Function "+ff+" with configuration " +mm+ " is placed in ("+ii+","+jj+")");
+	end-if
+end-do
+writeln("");	
+	
+!Creates grid with functions
+declarations
+	OccupiedByFunction:      array(iLocations, jLocations)      of integer;
+end-declarations
+
+forall (ii in iLocations) do
+	forall (jj in jLocations) do
+		forall (ff in Functions) do
+			forall (mm in 1..ConfigurationCount(SizeFunction(ff))) do
+				if (getsol(centrePlacement(ff, ii, jj, mm))>=0.5) then
+					forall(kk in (ii-2)..(ii+2), ll in (jj-2)..(jj+2)) do
+						if (UsedSquares(SizeFunction(ff),mm,ii,jj,kk,ll)=1) then
+							OccupiedByFunction(kk,ll):=ff;
+						end-if
+					end-do
+				end-if
+			end-do
+		end-do
+	end-do
+end-do
+
+!Visualizes grid with functions
+writeln('Visualization of the functions placed on the grid:');
+writeln(' ');
+forall (jj in jLocations) do
+	forall (ii in iLocations) do
+		write(OccupiedByFunction(ii,njLocations-jj+1));
+		write("  ");
+		if (OccupiedByFunction(ii,njLocations-jj+1)<10) then
+			write(" ");
+		end-if
+	end-do
+	writeln;
+end-do
+
+end-model
