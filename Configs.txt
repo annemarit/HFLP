@@ -1,5 +1,8 @@
-!Case
+!ETASJER
+
 nMaxSize : 9
+nConfigurations: 12                            !Maximum number of configurations a function can have 
+ConfigurationCount: [ 1 2 4 1 8 2 12 6 1 ]	   !Number of possible configurations for sizes 1..nMaxSize
 
 !(Size, Configuration) [ [ i ]
 !						 [ j ] ]
@@ -48,7 +51,7 @@ Configs: [
 (6 1) [ [ 0 1  0  1 1  0 ]
 		[ 0 0 -1 -1 1  1 ] ]
 (6 2) [ [ 0 1  0 -1 1 -1 ]
-		[ 0 0  1  0 1  1 ] ]
+        [ 0 0  1  0 1  1 ] ]
 
 !Size: 7
 (7 1)  [ [ 0  0  0 -1 -1 -1  1 ]
