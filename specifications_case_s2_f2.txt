@@ -1,0 +1,267 @@
+!Areas:
+Windows: [
+	!( Nodes )
+	!Floor 1
+	( 1 )  1
+	( 2 )  1
+	( 7 )  1
+	( 8 )  1
+	( 13 ) 1
+	( 14 ) 1
+	( 19 ) 1
+	( 20 ) 1
+	!Floor 2
+	( 27 ) 1
+	( 28 ) 1
+	( 33 ) 1
+	( 34 ) 1
+	( 39 ) 1
+	( 40 ) 1
+	( 45 ) 1
+	( 46 ) 1
+	!Floor 3
+	!( 52 ) 1
+	!( 53 ) 1
+	!( 58 ) 1
+	!( 59 ) 1
+	!( 60 ) 1
+	!( 65 ) 1
+	!( 66 ) 1
+	!Floor 4
+	!( 71 ) 1
+	!( 72 ) 1
+	!( 73 ) 1
+	!( 74 ) 1
+	!( 79 ) 1
+	!( 80 ) 1
+	!Floor 5
+	!( 85 ) 1
+	!( 86 ) 1
+	!( 87 ) 1
+	!( 88 ) 1
+]
+
+Oceanview: [
+	!( Nodes )
+	!Floor 1
+	( 2 )  1
+	( 8 )  1
+	( 13 ) 1
+	( 14 ) 1
+	( 19 ) 1
+	( 20 ) 1
+	!Floor 2
+	( 28 ) 1
+	( 34 ) 1
+	( 39 ) 1
+	( 40 ) 1
+	( 45 ) 1
+	( 46 ) 1
+	!Floor 3
+	!( 53 ) 1
+	!( 59 ) 1
+	!( 60 ) 1
+	!( 65 ) 1
+	!( 66 ) 1
+	!Floor 4
+	!( 73 ) 1
+	!( 74 ) 1
+	!( 79 ) 1
+	!( 80 ) 1
+	!Floor 5
+	!( 87 ) 1
+	!( 88 ) 1
+]
+
+AreasFloors : [
+	!(Floors, Nodes)
+	!Floor 1
+	( 1 1 )  1
+	( 1 2 )  1
+	( 1 3 )  1
+	( 1 4 )  1
+	( 1 5 )  1
+	( 1 6 )  1		
+	( 1 7 )  1
+	( 1 8 )  1
+	( 1 9 )  1
+	( 1 10 ) 1
+	( 1 11 ) 1
+	( 1 12 ) 1
+	( 1 13 ) 1
+	( 1 14 ) 1
+	( 1 15 ) 1
+	( 1 16 ) 1
+	( 1 17 ) 1
+	( 1 18 ) 1
+	( 1 19 ) 1
+	( 1 20 ) 1
+	( 1 21 ) 1
+	( 1 22 ) 1
+	( 1 23 ) 1
+	( 1 24 ) 1
+	( 1 25 ) 1
+	( 1 26 ) 1
+	!Floor 2
+	( 2 27 ) 1
+	( 2 28 ) 1
+	( 2 29 ) 1
+	( 2 30 ) 1
+	( 2 31 ) 1
+	( 2 32 ) 1
+	( 2 33 ) 1
+	( 2 34 ) 1
+	( 2 35 ) 1
+	( 2 36 ) 1
+	( 2 37 ) 1
+	( 2 38 ) 1
+	( 2 39 ) 1
+	( 2 40 ) 1
+	( 2 41 ) 1
+	( 2 42 ) 1
+	( 2 43 ) 1
+	( 2 44 ) 1
+	( 2 45 ) 1
+	( 2 46 ) 1
+	( 2 47 ) 1
+	( 2 48 ) 1
+	( 2 49 ) 1
+	( 2 50 ) 1
+	( 2 51 ) 1
+	!Floor 3
+	( 3 52 ) 1
+	!Floor 4
+	( 4 53 ) 1
+	!Floor 5
+	( 5 54 ) 1
+	]
+
+!Functions:
+FunctionsWindows: [
+	!( Functions )
+	( 44 ) 1 !Day area
+	( 45 ) 1 !Day area
+	!( 48 ) 1 !Bed ward medicine
+	!( 49 ) 1 !Bed ward 
+	!( 50 ) 1 !Bed ward orthopedics/surgery
+	!( 51 ) 1 !Patient hotel
+	!( 52 ) 1 !Children bed ward
+]
+
+FunctionsOceanview: [
+	!( Functions )
+	
+]
+
+
+LockedFunctionsCentre: [
+	!( Functions ) Nodes
+	!Ambulance central locked to ambulance building
+	( 16 ) 25
+	( 17 ) 51
+	
+	!Lock all centres from previous step (floor 1)
+	( 1 ) 20
+	( 2 ) 23
+	( 3 ) 11
+	( 4 ) 5
+	( 5 ) 26
+	( 6 ) 9
+	( 8 ) 12
+	( 11 ) 14
+	( 12 ) 3
+	( 13 ) 18
+	( 14 ) 15
+	( 15 ) 24
+	( 16 ) 25
+	( 25 ) 2
+	( 44 ) 7
+	( 45 ) 1
+
+
+	
+	!---------------------------------------------------
+	!Lock all functions in floor 3 to floor 3 (node 52)
+	( 23 ) 52
+	( 27 ) 52
+	( 34 ) 52
+	( 37 ) 52
+	( 40 ) 52
+	( 42 ) 52
+	( 43 ) 52
+	( 46 ) 52
+	( 50 ) 52
+	( 51 ) 52
+	( 52 ) 52
+	!Lock all functions in floor 4 to floor 4 (node 53)
+	( 9 ) 53
+	( 19 ) 53
+	( 20 ) 53
+	( 21 ) 53
+	( 22 ) 53
+	( 26 ) 53
+	( 47 ) 53
+	( 49 ) 53
+	( 53 ) 53
+	( 54 ) 53
+	!Lock all functions in floor 5 to floor 5 (node 54)
+	( 48 ) 54 	
+]
+
+
+LockedFunctions: [
+	!( Functions Nodes )
+	( 1 8  ) 1 !The emergency department locked to the emercency entrance
+	!Reception and pasient information locked to the public entrance
+	( 6 26 ) 1
+	( 6 9  ) 1
+	!---------------------------------------------------
+		!---------------------------------------------------
+	!Lock all functions from previous step (floor 1)
+	( 1 8 ) 1
+	( 1 19 ) 1
+	( 1 20 ) 1
+	( 2 21 ) 1
+	( 2 22 ) 1
+	( 2 23 ) 1
+	( 3 10 ) 1
+	( 3 11 ) 1
+	( 4 4 ) 1
+	( 4 5 ) 1
+	( 4 6 ) 1
+	( 5 21 ) 1
+	( 5 26 ) 1
+	( 6 9 ) 1
+	( 8 9 ) 1
+	( 8 10 ) 1
+	( 8 12 ) 1
+	( 11 2 ) 1
+	( 11 13 ) 1
+	( 11 14 ) 1
+	( 12 3 ) 1
+	( 12 6 ) 1
+	( 12 15 ) 1
+	( 13 13 ) 1
+	( 13 16 ) 1
+	( 13 18 ) 1
+	( 14 15 ) 1
+	( 15 22 ) 1
+	( 15 24 ) 1
+	( 16 25 ) 1
+	( 25 2 ) 1
+	( 31 16 ) 1
+	( 31 17 ) 1
+	( 44 7 ) 1
+	( 45 1 ) 1
+
+	
+	
+]
+
+LockedMinimumFraction: [
+	!( Functions Nodes ) Fraction
+]
+
+LockFloor : []
+LockNotFloor : []
+LockSameFloor : []
