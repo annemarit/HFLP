@@ -143,6 +143,7 @@ end-do
 !Creating Xplace: 1 where functions can be placed/=0 if functions can not be placed there)
 declarations
 	Xplace:			         dynamic array(Functions, Nodes)              of integer;
+	NeighboursOfNeighbours:  dynamic array(Nodes)                         of set of integer;
 end-declarations  
 
 forall (ff in Functions, ii in Nodes) do
@@ -165,20 +166,25 @@ forall (ff in Functions) do
 			end-do
 		end-if
 	end-do
-	!Locked centre
+	!Locked centre/neighbours
 	forall (ii in Nodes) do
 		if (LockedFunctionsCentre(ff)>0.5) then
-			forall(i2 in Nodes | i2<>LockedFunctionsCentre(ff)) do
+			forall(i2 in Nodes | i2<>LockedFunctionsCentre(ff) and not exists(NeighbourNodes(ii))) do
 				Xplace(ff,i2) := 0;
 			end-do
 		end-if
-	!Locked w (placement of function)
+	!Locked w (placement of function) If not neighbours or neighbours to the possible centre locations
 		if (LockedFunctions(ff,ii)>=1) then
-			forall (i2 in Nodes | i2<>ii) do
+			forall (tt in NeighbourNodes(ii)) do
+				forall (ss in NeighbourNodes(tt)) do
+					NeighboursOfNeighbours(ii) += {ss};
+				end-do
+			end-do
+			forall (i2 in Nodes | i2<>ii and (not exists(NeighbourNodes(ii)) or not exists(NeighboursOfNeighbours(ii)))) do
 				Xplace(ff,i2) := 0;
 			end-do
 		end-if	
-	end-do		
+	end-do
 	!Specifications (windows, oceanview etc.)
 	if (FunctionsOceanview(ff)=1) then
 		forall (ii in Nodes) do
@@ -194,7 +200,7 @@ forall (ff in Functions) do
 			end-if
 		end-do
 	end-if		
-end-do	
+end-do		
 
 !Declaring the variables
 declarations
@@ -367,7 +373,7 @@ minimize(TotalDistanceProximity);
 endtime := gettime;
 
 usedtime := endtime - starttime;
-fopen("output.dat", F_OUTPUT+F_APPEND);
+!fopen("output.dat", F_OUTPUT+F_APPEND);
 writeln(' Run time: ' + usedtime);
 
 writeln("");
@@ -401,6 +407,6 @@ forall (ee in Floors) do
 			AreaFunctions(ff)*getsol(FunctionsCentrePlacement(ff,ii)));
 end-do
 
-fclose(F_OUTPUT);
+!fclose(F_OUTPUT);
 
 end-model
