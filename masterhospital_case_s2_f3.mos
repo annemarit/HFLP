@@ -7,11 +7,11 @@ uses "mmxprs";
 uses "mmsystem";
 
 parameters
-DataFile          = 'datafile_case_s2_f3.txt';
+DataFile          = 'datafile_case_s2_f3_v1.txt';
 ProximityFile     = 'proximity_case_s2.txt';
 NeighbourFile     = 'neighbours_case_s2_f3.txt';
 DistanceFile      = 'distances_case_s2_f3.txt';
-SpecificationFile = 'specifications_case_s2_f3.txt';
+SpecificationFile = 'specifications_case_s2_f3_v1.txt';
 end-parameters
 
 declarations
@@ -153,7 +153,7 @@ forall (ff in Functions) do
 		if (LockFloor(ee,ff) = 1) then
 			forall (e2 in Floors | e2<>ee) do
 				forall (ii in NodesFloors(e2)) do
-						Xplace(ff,ii) := 0;
+					Xplace(ff,ii) := 0;
 				end-do
 			end-do
 		end-if
@@ -171,7 +171,7 @@ forall (ff in Functions) do
 			end-do
 		end-if
 	!Locked w (placement of function) If not neighbours or neighbours to the possible centre locations
-		if (LockedFunctions(ff,ii)>=1) then
+		if (LockedFunctions(ff,ii)>=1 or LockedMinimumFraction(ff,ii)>0) then
 			forall (tt in NeighbourNodes(ii)) do
 				forall (ss in NeighbourNodes(tt)) do
 					NeighboursOfNeighbours(ii) += {ss};
@@ -239,12 +239,6 @@ forall (ff in Functions, ii in Nodes | exists(FunctionsPlacement(ff, ii))) do
 	end-if
 end-do
 
-!Creating the binary variables p_fe
-forall (ff in Functions, ee in Floors) do
-	create(FloorVariable(ff,ee));
-	FloorVariable(ff,ee) is_binary;
-end-do
-
 !Creating the binary variables y_figj
 forall (ff in Functions, ii in Nodes, gg in Functions, jj in Nodes |
 		exists(FunctionsCentrePlacement(ff,ii)) and exists(FunctionsCentrePlacement(gg,jj))) do
@@ -252,6 +246,12 @@ forall (ff in Functions, ii in Nodes, gg in Functions, jj in Nodes |
 		create(RelationPlacement(ff, ii, gg, jj));
 		!RelationPlacement(ff, ii, gg, jj) is_binary;
 	end-if		
+end-do
+
+!Creating the binary variables p_fe
+forall (ff in Functions, ee in Floors) do
+	create(FloorVariable(ff,ee));
+	FloorVariable(ff,ee) is_binary;
 end-do
 
 !Lock functions to the same floor
@@ -333,10 +333,10 @@ forall (ii in Nodes) do
 end-do
 
 !Constraints (6)
-!forall (ff in Functions, ii in Nodes) do
-!	Con6(ff,ii) :=
-!		FunctionsCoverage(ff,ii) >= MinimumFraction * FunctionsPlacement(ff,ii);
-!end-do
+forall (ff in Functions, ii in Nodes) do
+	Con6(ff,ii) :=
+		FunctionsCoverage(ff,ii) >= MinimumFraction * FunctionsPlacement(ff,ii);
+end-do
 
 !Constraints (7)
 forall (ff in Functions, ii in Nodes) do
@@ -383,8 +383,10 @@ end-do
 
 !Constraints (14)
 forall (ff in Functions, ii in Nodes, gg in Functions | ff<gg and WeightedProximity(ff,gg)>0) do
-	Con14(ff,ii,gg) :=
-		FunctionsCentrePlacement(ff,ii) = sum(jj in Nodes | ii <> jj) RelationPlacement(ff,ii,gg,jj);
+	if (getsol(FunctionsCentrePlacement(ff,ii))<>getsol(FunctionsCentrePlacement(gg,ii))) then
+		Con14(ff,ii,gg) :=
+			FunctionsCentrePlacement(ff,ii) = sum(jj in Nodes | ii <> jj) RelationPlacement(ff,ii,gg,jj);
+	end-if
 end-do
 
 !Constraints (15)
@@ -441,7 +443,7 @@ end-do
 	
 	(!writeln("Function ", ff, ":");
 	forall(ii in Nodes) do
-		if(ii>51 and ii<71) then
+		if(ii>51 or ii<71) then
 			if(getsol(FunctionsCentrePlacement(ff,ii))=1) then
 				writeln("Centre in location ", ii);
 			end-if
