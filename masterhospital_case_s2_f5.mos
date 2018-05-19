@@ -7,11 +7,11 @@ uses "mmxprs";
 uses "mmsystem";
 
 parameters
-DataFile          = 'datafile_case_s2_f5.txt';
+DataFile          = 'datafile_case_s2_f5_v1.txt';
 ProximityFile     = 'proximity_case_s2.txt';
 NeighbourFile     = 'neighbours_case_s2_f5.txt';
 DistanceFile      = 'distances_case_s2_f5.txt';
-SpecificationFile = 'specifications_case_s2_f5.txt';
+SpecificationFile = 'specifications_case_s2_f5_v1.txt';
 end-parameters
 
 declarations
@@ -171,7 +171,7 @@ forall (ff in Functions) do
 			end-do
 		end-if
 	!Locked w (placement of function) If not neighbours or neighbours to the possible centre locations
-		if (LockedFunctions(ff,ii)>=1) then
+		if (LockedFunctions(ff,ii)>=1 or LockedMinimumFraction(ff,ii)>0) then
 			forall (tt in NeighbourNodes(ii)) do
 				forall (ss in NeighbourNodes(tt)) do
 					NeighboursOfNeighbours(ii) += {ss};
@@ -333,10 +333,10 @@ forall (ii in Nodes) do
 end-do
 
 !Constraints (6)
-!forall (ff in Functions, ii in Nodes) do
-!	Con6(ff,ii) :=
-!		FunctionsCoverage(ff,ii) >= MinimumFraction * FunctionsPlacement(ff,ii);
-!end-do
+forall (ff in Functions, ii in Nodes) do
+	Con6(ff,ii) :=
+		FunctionsCoverage(ff,ii) >= MinimumFraction * FunctionsPlacement(ff,ii);
+end-do
 
 !Constraints (7)
 forall (ff in Functions, ii in Nodes) do
@@ -383,8 +383,10 @@ end-do
 
 !Constraints (14)
 forall (ff in Functions, ii in Nodes, gg in Functions | ff<gg and WeightedProximity(ff,gg)>0) do
-	Con14(ff,ii,gg) :=
-		FunctionsCentrePlacement(ff,ii) = sum(jj in Nodes | ii <> jj) RelationPlacement(ff,ii,gg,jj);
+	if (getsol(FunctionsCentrePlacement(ff,ii))<>getsol(FunctionsCentrePlacement(gg,ii))) then
+		Con14(ff,ii,gg) :=
+			FunctionsCentrePlacement(ff,ii) = sum(jj in Nodes | ii <> jj) RelationPlacement(ff,ii,gg,jj);
+	end-if
 end-do
 
 !Constraints (15)
