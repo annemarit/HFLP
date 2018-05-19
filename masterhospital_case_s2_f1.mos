@@ -7,11 +7,11 @@ uses "mmxprs";
 uses "mmsystem";
 
 parameters
-DataFile          = 'datafile_case_s2_f1_v1.txt';
+DataFile          = 'datafile_case_s2_f1_v2.txt';
 ProximityFile     = 'proximity_case_s2.txt';
 NeighbourFile     = 'neighbours_case_s2_f1.txt';
 DistanceFile      = 'distances_case_s2_f1.txt';
-SpecificationFile = 'specifications_case_s2_f1_v1.txt';
+SpecificationFile = 'specifications_case_s2_f1_v2.txt';
 end-parameters
 
 declarations
@@ -333,10 +333,10 @@ forall (ii in Nodes) do
 end-do
 
 !Constraints (6)
-!forall (ff in Functions, ii in Nodes) do
-!	Con6(ff,ii) :=
-!		FunctionsCoverage(ff,ii) >= MinimumFraction * FunctionsPlacement(ff,ii);
-!end-do
+forall (ff in Functions, ii in Nodes) do
+	Con6(ff,ii) :=
+		FunctionsCoverage(ff,ii) >= MinimumFraction * FunctionsPlacement(ff,ii);
+end-do
 
 !Constraints (7)
 forall (ff in Functions, ii in Nodes) do

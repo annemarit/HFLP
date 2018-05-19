@@ -45,9 +45,9 @@ MaxFunctionsCapacity:[ !Floor 1
 					   2 2 2 2 2 2 2 2 2 2
 					   2 2 2 2 2 2
 					   !Floor 2
-					   17
+					   18
 					   !Floor 3
-					   15
+					   14
 					   !Floor 4
 					   7
 					   !Floor 5
@@ -58,9 +58,9 @@ MaxFunctionsCapacity:[ !Floor 1
 MaxCentresCapacity:  [ !Floor 1
 					   2 2 2 1 1 1 2 2 2 1 1 1 2 2 2 1 1 1 2 2 2 1 1 1 1 2
 					   !Floor 2
-					   17
+					   18
 					   !Floor 3
-					   15
+					   14
 					   !Floor 4
 					   7
 					   !Floor 5
