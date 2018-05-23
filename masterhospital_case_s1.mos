@@ -143,6 +143,7 @@ end-do
 !Creating Xplace: 1 where functions can be placed/=0 if functions can not be placed there)
 declarations
 	Xplace:			         dynamic array(Functions, Nodes)              of integer;
+	NeighboursOfNeighbours:  dynamic array(Nodes)                         of set of integer;
 end-declarations  
 
 forall (ff in Functions, ii in Nodes) do
@@ -165,20 +166,25 @@ forall (ff in Functions) do
 			end-do
 		end-if
 	end-do
-	!Locked centre
+	!Locked centre/neighbours
 	forall (ii in Nodes) do
 		if (LockedFunctionsCentre(ff)>0.5) then
-			forall(i2 in Nodes | i2<>LockedFunctionsCentre(ff)) do
+			forall(i2 in Nodes | i2<>LockedFunctionsCentre(ff) and not exists(NeighbourNodes(ii))) do
 				Xplace(ff,i2) := 0;
 			end-do
 		end-if
-	!Locked w (placement of function)
+	!Locked w (placement of function) If not neighbours or neighbours to the possible centre locations
 		if (LockedFunctions(ff,ii)>=1) then
-			forall (i2 in Nodes | i2<>ii) do
+			forall (tt in NeighbourNodes(ii)) do
+				forall (ss in NeighbourNodes(tt)) do
+					NeighboursOfNeighbours(ii) += {ss};
+				end-do
+			end-do
+			forall (i2 in Nodes | i2<>ii and (not exists(NeighbourNodes(ii)) or not exists(NeighboursOfNeighbours(ii)))) do
 				Xplace(ff,i2) := 0;
 			end-do
 		end-if	
-	end-do		
+	end-do
 	!Specifications (windows, oceanview etc.)
 	if (FunctionsOceanview(ff)=1) then
 		forall (ii in Nodes) do
@@ -194,7 +200,7 @@ forall (ff in Functions) do
 			end-if
 		end-do
 	end-if		
-end-do	
+end-do		
 
 !Declaring the variables
 declarations
@@ -272,7 +278,6 @@ declarations
 	Con11b:                   dynamic array(Functions, Nodes)                     of linctr;
 	Con12:                    dynamic array(Functions, Nodes)                     of linctr;
 	Con13:                    dynamic array(Functions, Functions)                 of linctr;
-	Con14:                    dynamic array(Functions, Nodes, Functions)          of linctr;
 	Con15:                    dynamic array(Functions)                            of linctr;
 	Con17:                    dynamic array(Functions, Floors)                    of linctr;
 	Con18:                    dynamic array(Floors)                               of linctr;
@@ -367,27 +372,12 @@ minimize(TotalDistanceProximity);
 endtime := gettime;
 
 usedtime := endtime - starttime;
-fopen("output.dat", F_OUTPUT+F_APPEND);
+fopen("output_s1.dat", F_OUTPUT+F_APPEND);
 writeln(' Run time: ' + usedtime);
 
 writeln("");
 writeln("Objective value: ", getobjval);
 writeln("");
-(!forall(ff in Functions) do
-	writeln("Function ", ff, ":");
-	forall(ii in Nodes) do
-		if(getsol(FunctionsCentrePlacement(ff,ii))=1) then
-				writeln("Centre in location ", ii);
-		end-if
-	end-do
-	forall(ii in Nodes) do
-		if(getsol(FunctionsPlacement(ff,ii))=1) then
-			writeln(getsol(FunctionsCoverage(ff,ii)*AreaLocations(ii)/RealAreaLocations(ii))," coverage of the real area of location ", ii);
-		end-if
-	end-do
-	writeln("");
-end-do
-!)
 
 forall (ee in Floors) do
 	write("Functions in floor ", ee, " are ");
@@ -399,6 +389,14 @@ forall (ee in Floors) do
 	writeln;
 	writeln("Total area of functions in floor ", ee, " is ", sum(ff in Functions, ii in NodesFloors(ee))
 			AreaFunctions(ff)*getsol(FunctionsCentrePlacement(ff,ii)));
+end-do
+
+writeln;
+writeln("LockFloor: ( Floors Functions ) 1");
+forall (ee in Floors, ff in Functions) do
+	if (getsol(FloorVariable(ff,ee))=1) then
+		writeln("( ", ee, " ", ff, " ) 1");
+	end-if
 end-do
 
 fclose(F_OUTPUT);
