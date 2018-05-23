@@ -28,7 +28,7 @@ while true; do
 	    break ;;
     esac
     break;
-#done
+done
 echo "Done pulling."
 echo "################"
 echo " "
