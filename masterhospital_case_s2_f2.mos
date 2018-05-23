@@ -206,7 +206,7 @@ declarations
 	FloorVariable:             dynamic array(Functions, Floors)                   of mpvar; !p
 end-declarations	
 
-setparam("XPRS_VERBOSE",true);
+
 
 !Creating the binary variables x_fi
 forall (ff in Functions, ii in Nodes) do
@@ -403,9 +403,9 @@ end-do
 
 
 
-
+setparam("XPRS_VERBOSE",true);
 !-----------------------------------------------------------------------------------------------------
-fopen("output_case_s2_f2.dat", F_OUTPUT+F_APPEND);	
+	
 
 starttime := gettime;
 
@@ -416,7 +416,7 @@ endtime := gettime;
 
 
 usedtime := endtime - starttime;
-
+fopen("output_case_s2_f2.dat", F_OUTPUT+F_APPEND);
 writeln(' Run time: ' + usedtime);
 
 writeln("");
