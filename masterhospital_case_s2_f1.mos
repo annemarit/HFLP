@@ -400,7 +400,7 @@ forall (ff in Functions, ee in Floors) do
 		FloorVariable(ff,ee) >= sum(ii in NodesFloors(ee)) FunctionsCentrePlacement(ff,ii);
 end-do
 	
-
+setparam("XPRS_VERBOSE",true);
 !-----------------------------------------------------------------------------------------------------
 
 starttime := gettime;
@@ -409,7 +409,7 @@ starttime := gettime;
 minimize(TotalDistanceProximity);
 
 endtime := gettime;
-setparam("XPRS_VERBOSE",true);
+
 usedtime := endtime - starttime;
 fopen("output_case_s2_f1.dat", F_OUTPUT+F_APPEND);
 
