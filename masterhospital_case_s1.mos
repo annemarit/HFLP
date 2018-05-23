@@ -372,7 +372,7 @@ minimize(TotalDistanceProximity);
 endtime := gettime;
 
 usedtime := endtime - starttime;
-fopen("output_s1.dat", F_OUTPUT+F_APPEND);
+fopen("output_case_s1.dat", F_OUTPUT+F_APPEND);
 setparam("XPRS_VERBOSE",true);
 writeln(' Run time: ' + usedtime);
 
