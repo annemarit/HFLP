@@ -372,27 +372,12 @@ minimize(TotalDistanceProximity);
 endtime := gettime;
 
 usedtime := endtime - starttime;
-!fopen("output.dat", F_OUTPUT+F_APPEND);
+fopen("output_s1.dat", F_OUTPUT+F_APPEND);
 writeln(' Run time: ' + usedtime);
 
 writeln("");
 writeln("Objective value: ", getobjval);
 writeln("");
-(!forall(ff in Functions) do
-	writeln("Function ", ff, ":");
-	forall(ii in Nodes) do
-		if(getsol(FunctionsCentrePlacement(ff,ii))=1) then
-				writeln("Centre in location ", ii);
-		end-if
-	end-do
-	forall(ii in Nodes) do
-		if(getsol(FunctionsPlacement(ff,ii))=1) then
-			writeln(getsol(FunctionsCoverage(ff,ii)*AreaLocations(ii)/RealAreaLocations(ii))," coverage of the real area of location ", ii);
-		end-if
-	end-do
-	writeln("");
-end-do
-!)
 
 forall (ee in Floors) do
 	write("Functions in floor ", ee, " are ");
@@ -406,6 +391,14 @@ forall (ee in Floors) do
 			AreaFunctions(ff)*getsol(FunctionsCentrePlacement(ff,ii)));
 end-do
 
-!fclose(F_OUTPUT);
+writeln;
+writeln("LockFloor: ( Floors Functions ) 1");
+forall (ee in Floors, ff in Functions) do
+	if (getsol(FloorVariable(ff,ee))=1) then
+		writeln("( ", ee, " ", ff, " ) 1");
+	end-if
+end-do
+
+fclose(F_OUTPUT);
 
 end-model
