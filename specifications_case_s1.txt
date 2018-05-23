@@ -1,4 +1,4 @@
-!Areas:
+ !Areas:
 Windows: [
 	!( Nodes )
 	!Floor 1
@@ -240,7 +240,7 @@ LockNotFloor: [
 	( 3 20 ) 1
 	( 3 21 ) 1
 	( 3 22 ) 1
-	!Lectures/research not in floor 1-2
+	!Education/research not in floor 1-2
 	( 1 46 ) 1
 	( 1 47 ) 1
 	( 2 46 ) 1
@@ -272,8 +272,10 @@ LockedFunctions: [
 	!( Functions Nodes )
 	!The emergency department locked to the emercency entrance
 	( 1 8  ) 1
-	!Reception and pasient information locked to the public entrance
+	!Reception and pasient information + LMS + Ministry locked to the public entrance
 	( 6 26 ) 1
+	( 7 26 ) 1
+	( 9 26 ) 1
 	
 ]
 
@@ -296,6 +298,7 @@ LockSameFloor : [
 	( 32 33 ) 1
 	!Day area locked to the same floor
 	( 44 45 ) 1
+	( 53 52 ) 1
 	!Fysio/ergo/nutrition locked to same floor
 	( 56 57 ) 1
 ]

@@ -278,7 +278,6 @@ declarations
 	Con11b:                   dynamic array(Functions, Nodes)                     of linctr;
 	Con12:                    dynamic array(Functions, Nodes)                     of linctr;
 	Con13:                    dynamic array(Functions, Functions)                 of linctr;
-	Con14:                    dynamic array(Functions, Nodes, Functions)          of linctr;
 	Con15:                    dynamic array(Functions)                            of linctr;
 	Con17:                    dynamic array(Functions, Floors)                    of linctr;
 	Con18:                    dynamic array(Floors)                               of linctr;
