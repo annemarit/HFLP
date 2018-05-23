@@ -409,10 +409,10 @@ starttime := gettime;
 minimize(TotalDistanceProximity);
 
 endtime := gettime;
-
+setparam("XPRS_VERBOSE",true);
 usedtime := endtime - starttime;
 fopen("output_case_s2_f1.dat", F_OUTPUT+F_APPEND);
-setparam("XPRS_VERBOSE",true);
+
 
 writeln(' Run time: ' + usedtime);
 
