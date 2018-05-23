@@ -104,7 +104,7 @@ initializations from SpecificationFile
 	LockSameFloor;
 end-initializations
 
-setparam("XPRS_VERBOSE",true);
+
 
 !Creating WeightedProximity
 forall (ff in Functions, gg in Functions | ff < gg) do
@@ -373,6 +373,7 @@ endtime := gettime;
 
 usedtime := endtime - starttime;
 fopen("output_s1.dat", F_OUTPUT+F_APPEND);
+setparam("XPRS_VERBOSE",true);
 writeln(' Run time: ' + usedtime);
 
 writeln("");

@@ -298,6 +298,7 @@ LockSameFloor : [
 	( 32 33 ) 1
 	!Day area locked to the same floor
 	( 44 45 ) 1
+	!Children bed ward and patient hotel on the same floor
 	( 53 52 ) 1
 	!Fysio/ergo/nutrition locked to same floor
 	( 56 57 ) 1
