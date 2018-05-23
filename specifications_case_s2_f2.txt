@@ -212,9 +212,10 @@ LockedFunctionsCentre: [
 LockedFunctions: [
 	!( Functions Nodes )
 	( 1 8  ) 1 !The emergency department locked to the emercency entrance
-	!Reception and pasient information locked to the public entrance
+	!Reception and pasient information + LMS + Ministry locked to the public entrance
 	( 6 26 ) 1
-	( 6 9  ) 1
+	( 7 26 ) 1
+	( 9 26 ) 1
 	!---------------------------------------------------
 		!---------------------------------------------------
 	!Lock all functions from previous step (floor 1)

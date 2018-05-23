@@ -7,11 +7,11 @@ uses "mmxprs";
 uses "mmsystem";
 
 parameters
-DataFile          = 'datafile_case_s2_f2_v2.txt';
+DataFile          = 'datafile_case_s2_f2_v1.txt';
 ProximityFile     = 'proximity_case_s2.txt';
 NeighbourFile     = 'neighbours_case_s2_f2.txt';
 DistanceFile      = 'distances_case_s2_f2.txt';
-SpecificationFile = 'specifications_case_s2_f2_v2.txt';
+SpecificationFile = 'specifications_case_s2_f2_v1.txt';
 end-parameters
 
 declarations
@@ -118,8 +118,6 @@ initializations from SpecificationFile
 	LockSameFloor;
 end-initializations
 
-setparam("XPRS_VERBOSE",true);
-
 !Creating WeightedProximity
 forall (ff in Functions, gg in Functions | ff < gg) do
 		WeightedProximity(ff, gg) := sum(pp in Perspectives) Weights(pp) * Proximity (pp, ff, gg);
@@ -207,6 +205,8 @@ declarations
 	RelationPlacement:         dynamic array(Functions, Nodes, Functions, Nodes)  of mpvar; !y
 	FloorVariable:             dynamic array(Functions, Floors)                   of mpvar; !p
 end-declarations	
+
+setparam("XPRS_VERBOSE",true);
 
 !Creating the binary variables x_fi
 forall (ff in Functions, ii in Nodes) do
@@ -400,9 +400,12 @@ forall (ff in Functions, ee in Floors) do
 	Con16(ff,ee) :=
 		FloorVariable(ff,ee) >= sum(ii in NodesFloors(ee)) FunctionsCentrePlacement(ff,ii);
 end-do
-	
+
+
+
 
 !-----------------------------------------------------------------------------------------------------
+fopen("output_case_s2_f2.dat", F_OUTPUT+F_APPEND);	
 
 starttime := gettime;
 
@@ -411,8 +414,9 @@ minimize(TotalDistanceProximity);
 
 endtime := gettime;
 
+
 usedtime := endtime - starttime;
-!fopen("output.dat", F_OUTPUT+F_APPEND);
+
 writeln(' Run time: ' + usedtime);
 
 writeln("");
@@ -440,35 +444,17 @@ forall(ff in Functions) do
 		end-if
 	end-do
 end-do
-	
-	(!writeln("Function ", ff, ":");
-	forall(ii in Nodes) do
-		if(ii>27 or ii<52) then
-			if(getsol(FunctionsCentrePlacement(ff,ii))=1) then
-				writeln("Centre in location ", ii);
-			end-if
-			if(getsol(FunctionsPlacement(ff,ii))=1) then
-				writeln(getsol(FunctionsCoverage(ff,ii))," coverage of the area of location ", ii);
-			end-if
-		else
-			if(getsol(FunctionsCentrePlacement(ff,ii))>0) then
-				writeln("Centre in location ", ii);
-			end-if
-		end-if
-	end-do!)
 
-
-(!forall (ee in Floors) do
-	write("Functions in floor ", ee, " are ");
+writeln;
+writeln("All functions so far placed in the building with fraction:");
+forall (ii in Nodes) do
 	forall (ff in Functions) do
-		if(getsol(FloorVariable(ff,ee))=1) then
-			write(ff, " ");
+		if(ii<52 and getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
+			writeln("( ", ff, " ", ii, " ) ", (AreaLocations(ii)/RealAreaLocations(ii))*getsol(FunctionsCoverage(ff,ii)));
 		end-if
 	end-do
-	writeln;
-	writeln("Total area of functions in floor ", ee, " is ", sum(ff in Functions, ii in Nodes) AreaFunctions(ff)*getsol(FunctionsCentrePlacement(ff,ii)));
 end-do
-!)
-!fclose(F_OUTPUT);
+
+fclose(F_OUTPUT);
 
 end-model
