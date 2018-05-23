@@ -411,7 +411,7 @@ minimize(TotalDistanceProximity);
 endtime := gettime;
 
 usedtime := endtime - starttime;
-!fopen("output_s2_f1.dat", F_OUTPUT+F_APPEND);
+fopen("output_s2_f1.dat", F_OUTPUT+F_APPEND);
 setparam("XPRS_VERBOSE",true);
 
 writeln(' Run time: ' + usedtime);
@@ -453,6 +453,6 @@ forall (ii in Nodes) do
 end-do
 
 writeln;
-!fclose(F_OUTPUT);
+fclose(F_OUTPUT);
 
 end-model
