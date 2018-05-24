@@ -8,11 +8,11 @@ uses "mmxprs";
 uses "mmsystem";
 
 parameters
-DataFile          = 'datafile_technical_2F1Q.txt';
-ProximityFile     = 'proximity_technical_2F1Q.txt';
-NeighbourFile     = 'neighbours_technical_2F1Q.txt';
-DistanceFile      = 'distances_technical_2F1Q.txt';
-SpecificationFile = 'specifications_technical_2F1Q.txt';
+DataFile          = 'datafile_technical_3F1Q.txt';
+ProximityFile     = 'proximity_technical_3F1Q.txt';
+NeighbourFile     = 'neighbours_technical_3F1Q.txt';
+DistanceFile      = 'distances_technical_3F1Q.txt';
+SpecificationFile = 'specifications_technical_3F1Q.txt';
 end-parameters
 
 declarations
@@ -450,7 +450,7 @@ end-do
 
 
 
-fopen("output_technical_2F1Q.dat", F_OUTPUT+F_APPEND);
+fopen("output_technical_3F1Q.dat", F_OUTPUT+F_APPEND);
 writeln;
 writeln;
 writeln("------------------------------------------------------------------------------------");
