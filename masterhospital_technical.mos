@@ -403,7 +403,7 @@ forall (ff in Functions, ll in Floors) do
 end-do
 
 setparam("XPRS_VERBOSE",true);
-setparam('XPRS_maxtime',-540000) ;
+setparam('XPRS_maxtime',-583200) ;
 !-----------------------------------------------------------------------------------------------------
 
 starttime := gettime;
