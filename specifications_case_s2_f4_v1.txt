@@ -328,6 +328,7 @@ LockedFunctions: [
 	( 55 45 ) 1
 	( 55 46 ) 1
 	!Lock all functions from previous steps (floor 3)
+	( 23 68 ) 1
 	( 23 69 ) 1
 	( 27 55 ) 1
 	( 27 56 ) 1
