@@ -414,7 +414,7 @@ endtime := gettime;
 
 usedtime := endtime - starttime;
 
-fopen("output_case_s2_f4.dat", F_OUTPUT+F_APPEND);
+!fopen("output_case_s2_f4.dat", F_OUTPUT+F_APPEND);
 writeln(' Run time: ' + usedtime);
 
 writeln("");
@@ -453,6 +453,6 @@ forall (ii in Nodes) do
 	end-do
 end-do
 
-fclose(F_OUTPUT);
+!fclose(F_OUTPUT);
 
 end-model
