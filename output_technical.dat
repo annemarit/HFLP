@@ -1,0 +1,40 @@
+ 
+Reading Problem \xprs_30e90a0
+Problem Statistics
+      903783 (      0 spare) rows
+      875601 (      0 spare) structural columns
+     4394109 (      0 spare) non-zero elements
+Global Statistics
+        7391 entities        0 sets        0 set members
+Minimizing MILP \xprs_30e90a0
+Original problem has:
+    903783 rows       875601 cols      4394109 elements      7391 globals
+Presolved problem has:
+    812703 rows       809537 cols      3230632 elements      6204 globals
+LP relaxation tightened
+Symmetric problem: generators: 1, support set: 344
+ Number of orbits: 172, largest orbit: 2
+Will try to keep branch and bound tree memory usage below 28.6Gb
+Starting concurrent solve with dual, primal and barrier (6 threads)
+
+                           Concurrent-Solve,  22s
+            Dual                      Primal                     Barrier      
+    objective   dual inf       objective   sum inf         p.obj.     d.obj.  
+ D  256.00000   .0000000 |  p   .0000000  101.20868 |  B  4.804E+08 -809152.60
+ D  1020.0010   .0000000 |  p   .0000000  99.778093 |  B  4.804E+08 -809152.60
+ D  1366.0017   .0000000 |  p   .0000000  94.760405 |  B  1.633E+08 -2683397.4
+ D  1413.0020   .0000000 |  p   .0000000  93.094083 |  B  66218177. -4009907.1
+ D  1727.0011   .0000000 |  p  2.6666667  65.536619 |  B  66218177. -4009907.1
+ D  2011.0015   .0000000 |  p  1016.2585  59.896820 |  B  31029229. -6888775.5
+ D  2146.0010   .0000000 |  p  2790.1334  57.308400 |  B  2885535.7 -862372.25
+ D  2216.0011   .0000000 |  p  2790.1334  55.696079 |  B  2885535.7 -862372.25
+ D  2510.0013   .0000000 |  p  3659.7622  54.634335 |  B  1346405.1 -562166.69
+ D  2836.0011   .0000000 |  p  3659.7622  49.909736 |  B  260766.68 -163693.39
+ D  3000.0011   .0000000 |  p  4201.8877  42.555234 |  B  260766.68 -163693.39
+ D  3218.0010   .0000000 |  p  5305.3829  41.269335 |  B  96744.186 -118965.39
+ D  3258.0014   .0000000 |  p  5305.3829  39.472451 |  B  67668.653 -90110.179
+ D  3267.0859   .0000000 |  p  5655.3342  37.146496 |  B  67668.653 -90110.179
+ D  3319.2426   .0000000 |  p  6553.6714  33.484712 |  B  39739.104 -63963.106
+ D  3348.3351   .0000000 |  p  6837.5135  29.415955 |  B  31749.624 -46825.276
+ D  3440.0015   .0000000 |  p  7360.1976  25.902132 |  B  31749.624 -46825.276
+ D  3536.0012   .0000000

@@ -119,8 +119,6 @@ initializations from SpecificationFile
 	LockSameFloor;
 end-initializations
 
-
-
 !Creating WeightedProximity
 forall (ff in Functions, gg in Functions | ff < gg) do
 		WeightedProximity(ff, gg) := sum(pp in Perspectives) Weights(pp) * Proximity (pp, ff, gg);
@@ -277,6 +275,9 @@ end-do
 
 writeln("------------------------------------------------------");
 
+
+fopen("output_technical.dat", F_OUTPUT+F_APPEND);
+
 !Declaration the objective function and constraints
 declarations
 	TotalDistanceProximity:   linctr;
@@ -401,6 +402,8 @@ forall (ff in Functions, ll in Floors) do
 		sum(ii in NodesFloors(ll)) FunctionsCentrePlacement(ff,ii) <= sum(ee in Floors) FloorVariable(ff,ee);
 end-do
 
+setparam("XPRS_VERBOSE",true);
+setparam('XPRS_maxtime',-240) ;
 !-----------------------------------------------------------------------------------------------------
 
 starttime := gettime;
@@ -411,10 +414,9 @@ minimize(TotalDistanceProximity);
 endtime := gettime;
 
 usedtime := endtime - starttime;
-fopen("output_technical.dat", F_OUTPUT+F_APPEND);
+
 writeln(' Run time: ' + usedtime);
-setparam("XPRS_VERBOSE",true);
-setparam('xprs_maxtime',-3600) ;
+
 
 writeln("");
 writeln("Objective value: ", getobjval);
@@ -445,7 +447,7 @@ writeln("All functions placed in the building with fraction:");
 forall (ii in Nodes) do
 	forall (ff in Functions) do
 		if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
-			writeln("( ", ff, " ", ii, " ) ", (AreaLocations(ii)/RealAreaLocations(ii))*getsol(FunctionsCoverage(ff,ii)));
+			writeln("( ", ff, " ", ii, " ) ", getsol(FunctionsCoverage(ff,ii)));
 		end-if
 	end-do
 end-do
