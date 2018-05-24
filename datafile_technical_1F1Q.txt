@@ -1,0 +1,24 @@
+nFunctions:               6          
+nNodes:                   6
+nPerspectives:            1
+nFloors:                  1
+MinimumFraction:          0.0
+MinimumFunctionFraction:  0.5
+NodesAreaIncrease:        1.05
+
+Weights:        [1.0]
+
+!Size of functions in m^2
+AreaFunctions:	       [ 350 100 150 50	180 200	]
+
+!Tells how many nodes a function can be spread across
+MaxSpreadFunctions:    [ 3 2 2 1 2 3 ]
+
+!Size of areas in m^2
+RealAreaLocations:     [ 250 200 250 110 110 110 ]
+
+!Tells how many functions a node could contain
+MaxFunctionsCapacity:[ 3 2 3 2 2 2 ]
+
+!Tells how many function centres a node could contain
+MaxCentresCapacity:  [ 2 2 2 1 1 1 ]
