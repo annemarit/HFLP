@@ -1,0 +1,77 @@
+!Areas:
+Windows: [
+	!( Nodes )
+	( 1 )  1
+	( 2 )  1
+	( 3 )  1
+	( 7 )  1
+	( 8 )  1
+	( 9 )  1
+	( 13 ) 1
+	( 14 ) 1
+	( 15 ) 1
+]
+
+Oceanview: [
+	!( Nodes )
+	( 1 )  1
+	( 7 )  1
+	( 13 ) 1
+]
+
+AreasFloors : [
+	!(Floors, Nodes)
+	( 1 1 )  1
+	( 1 2 )  1
+	( 1 3 )  1
+	( 1 4 )  1
+	( 1 5 )  1
+	( 1 6 )  1		
+	( 2 7 )  1
+	( 2 8 )  1
+	( 2 9 )  1
+	( 2 10 ) 1
+	( 2 11 ) 1
+	( 2 12 ) 1
+	( 3 13 ) 1
+	( 3 14 ) 1
+	( 3 15 ) 1
+	( 3 16 ) 1
+	( 3 17 ) 1
+	( 3 18 ) 1
+]
+
+!Functions:
+FunctionsWindows: [
+	!( Functions )1
+]
+
+FunctionsOceanview: [
+	!( Functions )1	
+]
+
+LockFloor : [
+	! ( Floors Functions ) 1
+	]
+
+LockNotFloor : [
+	! ( Floors Functions ) 1
+	( 1 1 ) 1
+	]
+
+LockedFunctionsCentre: [
+	!( Functions ) Nodes
+]
+
+LockedFunctions: [
+	!( Functions Nodes )
+]
+
+LockedMinimumFraction: [
+	!( Functions Nodes ) Fraction
+	
+]
+
+LockSameFloor : [
+	!(Functions, Functions) 1
+]
