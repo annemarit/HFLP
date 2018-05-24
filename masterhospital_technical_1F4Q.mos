@@ -8,11 +8,11 @@ uses "mmxprs";
 uses "mmsystem";
 
 parameters
-DataFile          = 'datafile_technical_1F2Q.txt';
-ProximityFile     = 'proximity_technical_1F2Q.txt';
-NeighbourFile     = 'neighbours_technical_1F2Q.txt';
-DistanceFile      = 'distances_technical_1F2Q.txt';
-SpecificationFile = 'specifications_technical_1F2Q.txt';
+DataFile          = 'datafile_technical_1F4Q.txt';
+ProximityFile     = 'proximity_technical_1F4Q.txt';
+NeighbourFile     = 'neighbours_technical_1F4Q.txt';
+DistanceFile      = 'distances_technical_1F4Q.txt';
+SpecificationFile = 'specifications_technical_1F4Q.txt';
 end-parameters
 
 declarations
@@ -449,38 +449,41 @@ end-do
 
 
 
-fopen("output_technical_1F2Q.dat", F_OUTPUT+F_APPEND);
-writeln;
-writeln;
-writeln("------------------------------------------------------------------------------------");
+fopen("output_technical_1F4Q.dat", F_OUTPUT+F_APPEND);
+writeln(' Run time: ' + usedtime);
+
+writeln("");
 writeln("Objective value: ", getobjval);
-writeln('Run time: ' + usedtime);
-writeln("------------------------------------------------------------------------------------");
-writeln;
-writeln("All functions placed in the building with fraction:");
-writeln(" ");
-forall (ii in Nodes) do
-	writeln("Node ",ii,":");
-	forall (ff in Functions) do
-		if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
-			write("	F",ff, ": ",(AreaLocations(ii)/RealAreaLocations(ii))*getsol(FunctionsCoverage(ff,ii)));
-				if(getsol(FunctionsCentrePlacement(ff,ii))=1) then
-					write(" (centre)");
-				end-if
-			writeln("");
+writeln("");
+writeln("Centres locked to locations (Function) Node:");
+forall(ff in Functions) do
+	forall(ii in Nodes) do
+		if(getsol(FunctionsCentrePlacement(ff,ii))=1) then
+			writeln("( ", ff, " ) ", ii);
 		end-if
 	end-do
 end-do
-writeln(" ");
-writeln(" ");
-forall (ff in Functions) do
-	write("F",ff," exists in nodes:");
-	forall (ii in Nodes) do
-		if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
-			write(ii," ");	
+
+writeln;
+writeln("Functions placed in locations (Functions, Nodes) 1:");
+forall(ff in Functions) do
+	forall(ii in Nodes) do
+		if (ii>84) then	
+			if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
+				writeln("( ", ff, " ", ii, " ) 1");
+			end-if
 		end-if
 	end-do
-	writeln(" ");
+end-do
+
+writeln;
+writeln("All functions placed in the building with fraction:");
+forall (ii in Nodes) do
+	forall (ff in Functions) do
+		if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
+			writeln("( ", ff, " ", ii, " ) ", (AreaLocations(ii)/RealAreaLocations(ii))*getsol(FunctionsCoverage(ff,ii)));
+		end-if
+	end-do
 end-do
 
 fclose(F_OUTPUT);
