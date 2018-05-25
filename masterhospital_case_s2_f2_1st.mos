@@ -7,11 +7,11 @@ uses "mmxprs";
 uses "mmsystem";
 
 parameters
-DataFile          = 'datafile_case_s2_f2_v1.txt';
+DataFile          = 'datafile_case_s2_f2_v1_1st.txt';
 ProximityFile     = 'proximity_case_s2.txt';
-NeighbourFile     = 'neighbours_case_s2_f2.txt';
-DistanceFile      = 'distances_case_s2_f2.txt';
-SpecificationFile = 'specifications_case_s2_f2_v1.txt';
+NeighbourFile     = 'neighbours_case_s2_f2_1st.txt';
+DistanceFile      = 'distances_case_s2_1st.txt';
+SpecificationFile = 'specifications_case_s2_f2_v1_1st.txt';
 end-parameters
 
 declarations
@@ -416,7 +416,7 @@ endtime := gettime;
 
 
 usedtime := endtime - starttime;
-fopen("output_case_s2_f2.dat", F_OUTPUT+F_APPEND);
+fopen("output_case_s2_f2_1st.dat", F_OUTPUT+F_APPEND);
 writeln(' Run time: ' + usedtime);
 
 writeln("");
