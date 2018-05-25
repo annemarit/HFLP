@@ -1,0 +1,490 @@
+!One-stage model
+model MasterHospital
+	
+options explterm
+options noimplicit
+
+uses "mmxprs";
+uses "mmsystem";
+
+parameters
+DataFile          = 'datafile_technical.txt';
+ProximityFile     = 'proximity_technical.txt';
+NeighbourFile     = 'neighbours_technical_lessneighbour.txt';
+DistanceFile      = 'distances_technical.txt';
+SpecificationFile = 'specifications_technical.txt';
+end-parameters
+
+declarations
+	starttime:   real;
+	endtime:     real;
+	usedtime:    real;
+end-declarations
+
+!Declaring sizes of sets
+declarations
+	nFunctions:           integer;
+	nNodes:               integer;
+	nPerspectives:        integer;
+	nFloors:              integer;
+end-declarations
+
+initializations from DataFile
+	nFunctions;
+	nNodes;
+	nPerspectives;
+	nFloors;
+end-initializations
+
+!Declaring sets
+declarations
+	Functions:           set of integer;
+	Nodes:               set of integer;
+	Perspectives:        set of integer;
+	Floors:              set of integer;
+end-declarations
+
+!Assigning values to the sets
+Functions    :=  1..nFunctions;
+Nodes        :=  1..nNodes;
+Perspectives :=  1..nPerspectives;
+Floors       :=  1..nFloors;
+
+!Declaring the parameters
+declarations
+	AreaFunctions:                   array(Functions)                                       of integer;
+	RealAreaLocations:               array(Nodes)                                           of integer;
+	AreaLocations:                   array(Nodes)                                           of real;
+	DistanceNodes:                   dynamic array(Nodes, Nodes)                            of integer;
+	Weights:                         array(Perspectives)                                    of real;
+	Proximity:                       dynamic array(Perspectives, Functions, Functions)      of integer;
+	WeightedProximity:               dynamic array(Functions, Functions)                    of real;
+	NeighbourNodes:                  dynamic array(Nodes)                                   of set of integer;
+	NodesFloors:                     dynamic array(Nodes)                                   of set of integer;
+	Windows:                         array(Nodes)                                           of integer;
+	Oceanview:                       array(Nodes)                                           of integer;
+	AreasFloors:			    	 array(Floors, Nodes)                                   of integer;
+	FunctionsWindows:                dynamic array(Functions)                               of integer;
+	FunctionsOceanview:              dynamic array(Functions)                               of integer;
+	LockFloor:                       dynamic array(Floors, Functions)                       of integer;
+	LockNotFloor:                    dynamic array(Floors, Functions)                       of integer;
+	LockedFunctionsCentre:           dynamic array(Functions)                               of integer;
+	LockedFunctions:                 dynamic array(Functions, Nodes)                        of integer;
+	LockedMinimumFraction:           dynamic array(Functions, Nodes)                        of real;
+	LockSameFloor:                   dynamic array(Functions, Functions)                    of integer;
+	MaxFunctionsCapacity:            dynamic array(Nodes)                                   of integer;
+	MaxCentresCapacity:              dynamic array(Nodes)                                   of integer;
+	MaxSpreadFunctions:              array(Functions)                                       of integer;
+	MinimumFraction:                                                                        real;
+	MinimumFunctionFraction:                                                                real;
+	NodesAreaIncrease:                                                                      real;
+end-declarations
+
+!Initializing the parameters
+initializations from DataFile
+	Weights;
+	AreaFunctions;
+	RealAreaLocations;
+	MaxFunctionsCapacity;
+	MaxCentresCapacity;
+	MaxSpreadFunctions;
+	MinimumFraction;
+	MinimumFunctionFraction;
+	NodesAreaIncrease;
+end-initializations	
+
+initializations from ProximityFile
+	Proximity;
+end-initializations
+
+initializations from NeighbourFile
+	NeighbourNodes;
+end-initializations
+
+initializations from DistanceFile
+	DistanceNodes;
+end-initializations
+
+initializations from SpecificationFile
+	Windows;
+	Oceanview;
+	AreasFloors;
+	FunctionsWindows;
+	FunctionsOceanview;
+	LockFloor;
+	LockNotFloor;
+	LockedFunctionsCentre;
+	LockedFunctions;
+	LockedMinimumFraction;
+	LockSameFloor;
+end-initializations
+
+
+
+!Creating WeightedProximity
+forall (ff in Functions, gg in Functions | ff < gg) do
+		WeightedProximity(ff, gg) := sum(pp in Perspectives) Weights(pp) * Proximity (pp, ff, gg);
+end-do
+
+!Creating subset NodesFloor
+forall (ee in Floors, ii in Nodes) do
+	if (AreasFloors(ee,ii)=1) then
+		NodesFloors(ee) += {ii};
+	end-if
+end-do
+
+!Adding extra margin to the area of locations
+forall (ii in Nodes) do
+	AreaLocations(ii) := NodesAreaIncrease*RealAreaLocations(ii);
+end-do
+
+!Creating Xplace: 1 where functions can be placed/=0 if functions can not be placed there)
+declarations
+	Xplace:			         dynamic array(Functions, Nodes)              of integer;
+	NeighboursOfNeighbours:  dynamic array(Nodes)                         of set of integer;
+end-declarations  
+
+forall (ff in Functions, ii in Nodes) do
+	Xplace(ff,ii) := 1;
+end-do
+
+forall (ff in Functions) do
+	!Floors
+	forall (ee in Floors) do
+		if (LockFloor(ee,ff) = 1) then
+			forall (e2 in Floors | e2<>ee) do
+				forall (ii in NodesFloors(e2)) do
+						Xplace(ff,ii) := 0;
+				end-do
+			end-do
+		end-if
+		if (LockNotFloor(ee,ff) = 1) then
+			forall (ii in NodesFloors(ee)) do
+				Xplace(ff,ii) := 0;
+			end-do
+		end-if
+	end-do
+	!Locked centre/neighbours
+	forall (ii in Nodes) do
+		if (LockedFunctionsCentre(ff)>0.5) then
+			forall(i2 in Nodes | i2<>LockedFunctionsCentre(ff) and not exists(NeighbourNodes(ii))) do
+				Xplace(ff,i2) := 0;
+			end-do
+		end-if
+	!Locked w (placement of function) If not neighbours or neighbours to the possible centre locations
+		if (LockedFunctions(ff,ii)>=1 or LockedMinimumFraction(ff,ii)>0) then
+			forall (tt in NeighbourNodes(ii)) do
+				forall (ss in NeighbourNodes(tt)) do
+					NeighboursOfNeighbours(ii) += {ss};
+				end-do
+			end-do
+			forall (i2 in Nodes | i2<>ii and (not exists(NeighbourNodes(ii)) or not exists(NeighboursOfNeighbours(ii)))) do
+				Xplace(ff,i2) := 0;
+			end-do
+		end-if	
+	end-do
+	!Specifications (windows, oceanview etc.)
+	if (FunctionsOceanview(ff)=1) then
+		forall (ii in Nodes) do
+			if (Oceanview(ii)=0) then
+				Xplace(ff,ii) := 0;
+			end-if
+		end-do
+	end-if
+	if (FunctionsWindows(ff)=1) then
+		forall (ii in Nodes) do
+			if (Windows(ii)=0) then
+				Xplace(ff,ii) := 0;
+			end-if
+		end-do
+	end-if		
+end-do	
+
+!Declaring the variables
+declarations
+	FunctionsCentrePlacement:  dynamic array(Functions, Nodes)                    of mpvar; !x
+	FunctionsPlacement:        dynamic array(Functions, Nodes)                    of mpvar; !w
+	FunctionsCoverage:         dynamic array(Functions, Nodes)                    of mpvar; !t
+	RelationPlacement:         dynamic array(Functions, Nodes, Functions, Nodes)  of mpvar; !y
+	FloorVariable:             dynamic array(Functions, Floors)                   of mpvar; !p
+end-declarations	
+
+!Creating the binary variables x_fi
+forall (ff in Functions, ii in Nodes) do
+	if (Xplace(ff,ii)=1) then
+		create(FunctionsCentrePlacement(ff, ii));
+		FunctionsCentrePlacement(ff, ii) is_binary;
+	end-if
+	if (LockedFunctionsCentre(ff) = ii) then
+		FunctionsCentrePlacement(ff,ii)>=1;
+	end-if
+end-do
+
+!Creating the binary variables w_fi
+forall (ff in Functions, ii in Nodes) do
+	if (Xplace(ff,ii)=1) then
+		create(FunctionsPlacement(ff, ii));
+		FunctionsPlacement(ff, ii) is_binary;
+	end-if
+	if (LockedFunctions(ff, ii) = 1) then
+		FunctionsPlacement(ff, ii) >= 1;
+	end-if
+end-do	
+
+!Creating the variables t_fi
+forall (ff in Functions, ii in Nodes | exists(FunctionsPlacement(ff, ii))) do
+	create(FunctionsCoverage(ff, ii));
+	FunctionsCoverage(ff, ii) >= 0;
+	if (LockedMinimumFraction(ff, ii)>0.0) then
+		FunctionsCoverage(ff, ii) >= LockedMinimumFraction(ff, ii);
+	end-if
+end-do
+
+!Creating the binary variables y_figj
+forall (ff in Functions, ii in Nodes, gg in Functions, jj in Nodes |
+		exists(FunctionsCentrePlacement(ff,ii)) and exists(FunctionsCentrePlacement(gg,jj))) do
+	if (ff<gg and (ii <> jj) and WeightedProximity(ff,gg)>0) then
+		create(RelationPlacement(ff, ii, gg, jj));
+		!RelationPlacement(ff, ii, gg, jj) is_binary;
+	end-if		
+end-do
+
+!Creating the binary variables p_fe
+forall (ff in Functions, ee in Floors) do
+	create(FloorVariable(ff,ee));
+	FloorVariable(ff,ee) is_binary;
+end-do
+
+!Lock functions to the same floor
+forall(ff in Functions) do
+	forall(gg in Functions) do
+		forall (ee in Floors) do
+			if (LockSameFloor(ff,gg)=1) then
+				FloorVariable(ff,ee)=FloorVariable(gg,ee);
+			end-if
+		end-do
+	end-do
+end-do
+
+!Writing the neighbour nodes of each node
+forall (ii in Nodes) do
+	write("The neighbours to node ");
+	if (ii<10) then
+		write(" ");
+	end-if
+	writeln(ii," are ", NeighbourNodes(ii));
+end-do
+
+writeln("------------------------------------------------------");
+
+!Declaration the objective function and constraints
+declarations
+	TotalDistanceProximity:   linctr;
+	Con1:                     dynamic array(Functions)                            of linctr;
+	Con2:                     dynamic array(Nodes)                                of linctr;
+	Con3:                     dynamic array(Nodes)                                of linctr;
+	Con4:                     dynamic array(Functions)                            of linctr;
+	Con5:                     dynamic array(Nodes)                                of linctr;
+	Con6:                     dynamic array(Functions, Nodes)                     of linctr;
+	Con7:                     dynamic array(Functions, Nodes)                     of linctr;
+	Con8:                     dynamic array(Functions, Nodes, Functions, Nodes)   of linctr;
+	Con9:                     dynamic array(Functions, Nodes)                     of linctr;
+	Con10:                    dynamic array(Functions)                            of linctr;
+	Con11:                    dynamic array(Functions, Nodes)                     of linctr;
+	Con12:                    dynamic array(Functions, Nodes)                     of linctr;
+	Con13:                    dynamic array(Functions, Functions)                 of linctr;
+	Con14:                    dynamic array(Functions, Nodes, Functions)          of linctr;
+	Con15:                    dynamic array(Functions)                            of linctr;
+	Con16:                    dynamic array(Functions)                            of linctr;
+end-declarations
+
+!Objective function
+TotalDistanceProximity :=
+	sum (ff in Functions, ii in Nodes, gg in Functions, jj in Nodes | ff < gg)
+		WeightedProximity(ff,gg) * DistanceNodes(ii, jj) * RelationPlacement(ff, ii, gg, jj);
+
+!Constraints (1)
+forall (ff in Functions) do
+	Con1(ff) :=
+		sum(ii in Nodes) FunctionsCentrePlacement(ff,ii) = 1.0;
+end-do
+
+!Constraints (2)
+forall (ii in Nodes) do
+	Con2(ii) :=
+		sum(ff in Functions) FunctionsCentrePlacement(ff,ii) <= MaxCentresCapacity(ii);
+end-do
+
+!Constraints (3)
+forall (ii in Nodes) do
+	Con3(ii) :=
+		sum(ff in Functions) FunctionsPlacement(ff,ii) <= MaxFunctionsCapacity(ii);
+end-do
+
+!Constraints (4)
+forall (ff in Functions) do
+	Con4(ff) :=
+		sum(ii in Nodes) FunctionsPlacement(ff,ii) <= MaxSpreadFunctions(ff);
+end-do
+
+!Constraints (5)
+forall (ii in Nodes) do
+	Con5(ii) :=
+		sum(ff in Functions) FunctionsCoverage(ff,ii) <= 1.0;
+end-do
+
+!Constraints (6)
+forall (ff in Functions, ii in Nodes) do
+	Con6(ff,ii) :=
+		FunctionsCoverage(ff,ii) >= MinimumFraction * FunctionsPlacement(ff,ii);
+end-do
+
+!Constraints (7)
+forall (ff in Functions, ii in Nodes) do
+	Con7(ff, ii) :=
+		FunctionsCoverage(ff,ii) - FunctionsPlacement(ff,ii) <= 0.0;
+end-do
+
+!Constraints (8)
+forall (ff in Functions, ii in Nodes, gg in Functions, jj in Nodes | ff < gg and exists(RelationPlacement(ff, ii, gg, jj))) do
+	Con8(ff, ii, gg, jj) :=
+	FunctionsCentrePlacement(ff,ii) + FunctionsCentrePlacement(gg,jj) - RelationPlacement(ff, ii, gg, jj) <= 1.0;
+end-do
+
+!Constraints (9)
+forall (ff in Functions, ii in Nodes) do
+	Con9(ff, ii) :=
+		FunctionsCentrePlacement(ff,ii) - FunctionsPlacement(ff,ii) <= 0.0;
+end-do
+
+!Constraints (10)
+forall (ff in Functions) do
+	Con10(ff) :=
+		sum(ii in Nodes) AreaLocations(ii) * FunctionsCoverage(ff,ii) >= AreaFunctions(ff);
+end-do
+
+!Constraints (11)
+forall (ff in Functions, ii in Nodes) do
+	Con11(ff,ii) :=
+		FunctionsCoverage(ff,ii) >= minlist(1,AreaFunctions(ff)/AreaLocations(ii))*FunctionsCentrePlacement(ff,ii);
+end-do
+
+!Constraints (12)
+forall (ff in Functions, ii in Nodes) do
+	Con12(ff, ii) :=
+		FunctionsPlacement(ff, ii) <= FunctionsCentrePlacement(ff,ii) + sum(jj in NeighbourNodes(ii)) FunctionsCentrePlacement(ff,jj);
+end-do
+
+!Constraints (13) sum of y = 1
+forall (ff in Functions, gg in Functions | ff < gg and sum(ii in Nodes, jj in Nodes |
+		exists(RelationPlacement(ff,ii,gg,jj)))1 >= 1) do
+	Con13(ff,gg) :=
+		sum(ii in Nodes, jj in Nodes) RelationPlacement(ff,ii,gg,jj) = 1.0;
+end-do
+
+!Constraints (14)
+forall (ff in Functions, ii in Nodes, gg in Functions | ff<gg and WeightedProximity(ff,gg)>0) do
+	Con14(ff,ii,gg) :=
+		FunctionsCentrePlacement(ff,ii) = sum(jj in Nodes | ii <> jj) RelationPlacement(ff,ii,gg,jj);
+end-do
+
+!Constraints used to lock functions to floors
+!Constraints (15)
+forall (ff in Functions) do
+	Con15(ff) :=
+		sum(ee in Floors) FloorVariable(ff,ee) = 1.0;
+end-do
+
+!Constraints (16)
+forall (ff in Functions, ll in Floors) do
+	Con16(ff) :=
+		sum(ii in NodesFloors(ll)) FunctionsCentrePlacement(ff,ii) <= sum(ee in Floors) FloorVariable(ff,ee);
+end-do
+
+setparam("XPRS_VERBOSE",true);
+
+!-----------------------------------------------------------------------------------------------------
+
+starttime := gettime;
+
+!Minimizes the function
+minimize(TotalDistanceProximity);
+
+endtime := gettime;
+
+usedtime := endtime - starttime;
+
+writeln;
+writeln;
+writeln("------------------------------------------------------------------------------------");
+writeln("Objective value: ", getobjval);
+writeln('Run time: ' + usedtime);
+writeln("------------------------------------------------------------------------------------");
+writeln;
+writeln("All functions placed in the building with fraction:");
+writeln(" ");
+forall (ii in Nodes) do
+	writeln("Node ",ii,":");
+	forall (ff in Functions) do
+		if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
+			write("	F",ff, ": ",(AreaLocations(ii)/RealAreaLocations(ii))*getsol(FunctionsCoverage(ff,ii)));
+				if(getsol(FunctionsCentrePlacement(ff,ii))=1) then
+					write(" (centre)");
+				end-if
+			writeln("");
+		end-if
+	end-do
+end-do
+writeln(" ");
+writeln(" ");
+forall (ff in Functions) do
+	write("F",ff," exists in nodes:");
+	forall (ii in Nodes) do
+		if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
+			write(ii," ");	
+		end-if
+	end-do
+	writeln(" ");
+end-do
+
+
+
+
+fopen("output_technical_lessneighbour.dat", F_OUTPUT+F_APPEND);
+writeln;
+writeln;
+writeln("------------------------------------------------------------------------------------");
+writeln("Objective value: ", getobjval);
+writeln('Run time: ' + usedtime);
+writeln("------------------------------------------------------------------------------------");
+writeln;
+writeln("All functions placed in the building with fraction:");
+writeln(" ");
+forall (ii in Nodes) do
+	writeln("Node ",ii,":");
+	forall (ff in Functions) do
+		if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
+			write("	F",ff, ": ",(AreaLocations(ii)/RealAreaLocations(ii))*getsol(FunctionsCoverage(ff,ii)));
+				if(getsol(FunctionsCentrePlacement(ff,ii))=1) then
+					write(" (centre)");
+				end-if
+			writeln("");
+		end-if
+	end-do
+end-do
+writeln(" ");
+writeln(" ");
+forall (ff in Functions) do
+	write("F",ff," exists in nodes:");
+	forall (ii in Nodes) do
+		if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
+			write(ii," ");	
+		end-if
+	end-do
+	writeln(" ");
+end-do
+
+fclose(F_OUTPUT);
+
+
+end-model
