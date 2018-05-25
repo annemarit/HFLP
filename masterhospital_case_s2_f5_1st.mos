@@ -7,11 +7,11 @@ uses "mmxprs";
 uses "mmsystem";
 
 parameters
-DataFile          = 'datafile_case_s2_f5_v1.txt';
+DataFile          = 'datafile_case_s2_f5_v1_1st.txt';
 ProximityFile     = 'proximity_case_s2.txt';
-NeighbourFile     = 'neighbours_case_s2_f5.txt';
-DistanceFile      = 'distances_case_s2_f5.txt';
-SpecificationFile = 'specifications_case_s2_f5_v1.txt';
+NeighbourFile     = 'neighbours_case_s2_f5_1st.txt';
+DistanceFile      = 'distances_case_s2_1st.txt';
+SpecificationFile = 'specifications_case_s2_f5_v1_1st.txt';
 end-parameters
 
 declarations
@@ -164,11 +164,12 @@ forall (ff in Functions) do
 	end-do
 	!Locked centre/neighbours
 	forall (ii in Nodes) do
-		if (LockedFunctionsCentre(ff)>0.5) then
+		if (LockedFunctionsCentre(ff)>=1) then
 			forall(i2 in Nodes | i2<>LockedFunctionsCentre(ff) and not exists(NeighbourNodes(ii))) do
 				Xplace(ff,i2) := 0;
 			end-do
 		end-if
+		
 	!Locked w (placement of function) If not neighbours or neighbours to the possible centre locations
 		if (LockedFunctions(ff,ii)>=1 or LockedMinimumFraction(ff,ii)>0) then
 			forall (tt in NeighbourNodes(ii)) do
@@ -287,12 +288,12 @@ declarations
 	Con5:                     dynamic array(Nodes)                                of linctr;
 	Con6:                     dynamic array(Functions, Nodes)                     of linctr;
 	Con7:                     dynamic array(Functions, Nodes)                     of linctr;
-	Con8:                     dynamic array(Functions, Nodes, Functions, Nodes)    of linctr;
+	Con8:                     dynamic array(Functions, Nodes, Functions, Nodes)   of linctr;
 	Con9:                     dynamic array(Functions, Nodes)                     of linctr;
 	Con10:                    dynamic array(Functions)                            of linctr;
 	Con11:                    dynamic array(Functions, Nodes)                     of linctr;
 	Con12:                    dynamic array(Functions, Nodes)                     of linctr;
-	Con13:                    dynamic array(Functions, Functions)                  of linctr;
+	Con13:                    dynamic array(Functions, Functions)                 of linctr;
 	Con14:                    dynamic array(Functions, Nodes, Functions)          of linctr;
 	Con15:                    dynamic array(Functions)                            of linctr;
 	Con16:                    dynamic array(Functions, Floors)                    of linctr;
@@ -415,7 +416,9 @@ endtime := gettime;
 
 usedtime := endtime - starttime;
 
-fopen("output_case_s2_f5.dat", F_OUTPUT+F_APPEND);
+fopen("output_case_s2_f5_1st.dat", F_OUTPUT+F_APPEND);
+writeln;
+write("Date and time: ", datetime(SYS_NOW));
 writeln(' Run time: ' + usedtime);
 
 writeln("");
