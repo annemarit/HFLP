@@ -43,3 +43,48 @@ All functions so far placed in the building with fraction:
 ( 26 82 ) 1
 ( 26 83 ) 1
 ( 20 84 ) 1
+ Run time: 0.728
+
+Objective value: 4263
+
+Centres locked to locations (Function) Node:
+( 19 ) 75
+( 20 ) 81
+( 21 ) 77
+( 26 ) 83
+( 48 ) 72
+( 50 ) 73
+
+Functions placed in locations (Functions, Nodes) 1:
+( 19 71 ) 1
+( 19 75 ) 1
+( 20 81 ) 1
+( 20 84 ) 1
+( 21 74 ) 1
+( 21 76 ) 1
+( 21 77 ) 1
+( 26 82 ) 1
+( 26 83 ) 1
+( 48 71 ) 1
+( 48 72 ) 1
+( 48 80 ) 1
+( 50 73 ) 1
+( 50 74 ) 1
+( 50 79 ) 1
+
+All functions so far placed in the building with fraction:
+( 19 71 ) 0.0432234
+( 48 71 ) 0.956777
+( 48 72 ) 1
+( 50 73 ) 1
+( 21 74 ) 0.29849
+( 50 74 ) 0.70151
+( 19 75 ) 1
+( 21 76 ) 1
+( 21 77 ) 1
+( 50 79 ) 1
+( 48 80 ) 1
+( 20 81 ) 1
+( 26 82 ) 1
+( 26 83 ) 1
+( 20 84 ) 1
