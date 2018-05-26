@@ -371,7 +371,7 @@ forall (ff in Functions, ii in Nodes) do
 end-do
 
 !Constraints (12)
-forall (ff in Functions, ii in Functions) do
+forall (ff in Functions, ii in Nodes) do
 	Con12(ff, ii) :=
 		FunctionsPlacement(ff, ii) <= FunctionsCentrePlacement(ff,ii) + sum(jj in NeighbourNodes(ii)) FunctionsCentrePlacement(ff,jj);
 end-do
@@ -403,7 +403,7 @@ forall (ff in Functions, ll in Floors) do
 end-do
 
 setparam("XPRS_VERBOSE",true);
-setparam('XPRS_maxtime',-583200) ;
+setparam('XPRS_maxtime',-388800) ;
 !-----------------------------------------------------------------------------------------------------
 
 starttime := gettime;
