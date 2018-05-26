@@ -424,10 +424,8 @@ writeln("");
 writeln("Centres locked to locations (Function) Node:");
 forall(ff in Functions) do
 	forall(ii in Nodes) do
-		if (ii>51 and ii<71) then	
-			if(getsol(FunctionsCentrePlacement(ff,ii))=1) then
-				writeln("( ", ff, " ) ", ii);
-			end-if
+		if(getsol(FunctionsCentrePlacement(ff,ii))=1) then
+			writeln("( ", ff, " ) ", ii);
 		end-if
 	end-do
 end-do
@@ -435,11 +433,9 @@ end-do
 writeln;
 writeln("Functions placed in locations (Functions, Nodes) 1:");
 forall(ff in Functions) do
-	forall(ii in Nodes) do
-		if (ii>51 and ii<71) then	
-			if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
-				writeln("( ", ff, " ", ii, " ) 1");
-			end-if
+	forall(ii in Nodes) do	
+		if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
+			writeln("( ", ff, " ", ii, " ) 1");
 		end-if
 	end-do
 end-do
@@ -448,7 +444,7 @@ writeln;
 writeln("All functions so far placed in the building with fraction:");
 forall (ii in Nodes) do
 	forall (ff in Functions) do
-		if(ii<71 and getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
+		if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
 			writeln("( ", ff, " ", ii, " ) ", getsol(FunctionsCoverage(ff,ii)));
 		end-if
 	end-do
