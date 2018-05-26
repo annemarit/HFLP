@@ -4,7 +4,7 @@ nPerspectives:            1
 nFloors:                  1
 MinimumFraction:          0.0
 MinimumFunctionFraction:  0.5
-NodesAreaIncrease:        1.0
+NodesAreaIncrease:        1.01
 
 Weights:        [1.0]
 
@@ -22,7 +22,7 @@ MaxSpreadFunctions:    [ 3 2 1 3
 
 !Size of areas in m^2
 RealAreaLocations:     [ !Floor 1
-			 			 250 200 250 110 110 110 
+			 250 200 250 110 110 110 
                          250 200 250 110 110 110
                          250 200 250 110 110 110
                          250 200 250 110 110 110
