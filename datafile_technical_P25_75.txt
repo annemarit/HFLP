@@ -1,6 +1,6 @@
 nFunctions:               13          
 nNodes:                   19
-nPerspectives:            1
+nPerspectives:            2
 nFloors:                  1
 MinimumFraction:          0.0
 MinimumFunctionFraction:  0.5
