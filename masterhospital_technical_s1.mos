@@ -406,4 +406,30 @@ end-do
 
 fclose(F_OUTPUT);
 
+writeln(' Run time: ' + usedtime);
+
+writeln("");
+writeln("Objective value: ", getobjval);
+writeln("");
+
+forall (ee in Floors) do
+	write("Functions in floor ", ee, " are ");
+	forall (ff in Functions) do
+		if(getsol(FloorVariable(ff,ee))=1) then
+			write(ff, " ");
+		end-if
+	end-do
+	writeln;
+	writeln("Total area of functions in floor ", ee, " is ", sum(ff in Functions, ii in NodesFloors(ee))
+			AreaFunctions(ff)*getsol(FunctionsCentrePlacement(ff,ii)));
+end-do
+
+writeln;
+writeln("LockFloor: ( Floors Functions ) 1");
+forall (ee in Floors, ff in Functions) do
+	if (getsol(FloorVariable(ff,ee))=1) then
+		writeln("( ", ee, " ", ff, " ) 1");
+	end-if
+end-do
+
 end-model
