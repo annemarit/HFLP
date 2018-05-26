@@ -7,11 +7,11 @@ uses "mmxprs";
 uses "mmsystem";
 
 parameters
-DataFile          = 'datafile_case_s2_f1_v1.txt';
+DataFile          = 'datafile_case_s2_f1_v1_htl.txt';
 ProximityFile     = 'proximity_case_s2.txt';
-NeighbourFile     = 'neighbours_case_s2_f1.txt';
-DistanceFile      = 'distances_case_s2_f1.txt';
-SpecificationFile = 'specifications_case_s2_f1_v1.txt';
+NeighbourFile     = 'neighbours_case_s2_f1_htl.txt';
+DistanceFile      = 'distances_case_s2_1st.txt';
+SpecificationFile = 'specifications_case_s2_f1_v1_htl.txt';
 end-parameters
 
 declarations
@@ -413,7 +413,7 @@ endtime := gettime;
 usedtime := endtime - starttime;
 
 
-fopen("output_case_s2_f1.dat", F_OUTPUT+F_APPEND);
+fopen("output_case_s2_f1_htl.dat", F_OUTPUT+F_APPEND);
 
 writeln(' Run time: ' + usedtime);
 
@@ -423,10 +423,8 @@ writeln("");
 writeln("Centres locked to locations (Function) Node:");
 forall(ff in Functions) do
 	forall(ii in Nodes) do
-		if (ii<27) then	
-			if(getsol(FunctionsCentrePlacement(ff,ii))=1) then
-				writeln("( ", ff, " ) ", ii);
-			end-if
+		if(getsol(FunctionsCentrePlacement(ff,ii))=1) then
+			writeln("( ", ff, " ) ", ii);
 		end-if
 	end-do
 end-do
@@ -435,10 +433,8 @@ writeln;
 writeln("Functions placed in locations (Functions, Nodes) 1:");
 forall(ff in Functions) do
 	forall(ii in Nodes) do
-		if (ii<27) then	
-			if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
-				writeln("( ", ff, " ", ii, " ) 1");
-			end-if
+		if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
+			writeln("( ", ff, " ", ii, " ) 1");
 		end-if
 	end-do
 end-do
@@ -447,7 +443,7 @@ writeln;
 writeln("All functions so far placed in the building with fraction:");
 forall (ii in Nodes) do
 	forall (ff in Functions) do
-		if(ii<27 and getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
+		if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
 			writeln("( ", ff, " ", ii, " ) ", getsol(FunctionsCoverage(ff,ii)));
 		end-if
 	end-do
