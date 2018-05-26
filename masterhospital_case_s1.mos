@@ -211,9 +211,6 @@ declarations
 	FloorVariable:             dynamic array(Functions, Floors)                   of mpvar; !p
 end-declarations	
 
-fopen("output_case_s1.dat", F_OUTPUT+F_APPEND);
-setparam("XPRS_VERBOSE",true);
-
 !Creating the binary variables x_fi
 forall (ff in Functions, ii in Nodes) do
 	if (Xplace(ff,ii)=1) then
@@ -366,10 +363,12 @@ forall (ee in Floors) do
 end-do	
 
 
+setparam("XPRS_VERBOSE",true);
+
 !-----------------------------------------------------------------------------------------------------
 
 starttime := gettime;
-
+fopen("output_case_s1.dat", F_OUTPUT+F_APPEND);
 !Minimizes the function
 minimize(TotalDistanceProximity);
 
