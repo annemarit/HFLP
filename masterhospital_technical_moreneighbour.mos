@@ -427,7 +427,7 @@ forall (ii in Nodes) do
 	writeln("Node ",ii,":");
 	forall (ff in Functions) do
 		if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
-			write("	F",ff, ": ",(AreaLocations(ii)/RealAreaLocations(ii))*getsol(FunctionsCoverage(ff,ii)));
+			write("	F",ff, ": ",getsol(FunctionsCoverage(ff,ii)));
 				if(getsol(FunctionsCentrePlacement(ff,ii))=1) then
 					write(" (centre)");
 				end-if
@@ -450,7 +450,7 @@ end-do
 
 
 
-fopen("output_technical_lessneighbour.dat", F_OUTPUT+F_APPEND);
+fopen("output_technical_moreneighbour.dat", F_OUTPUT+F_APPEND);
 writeln;
 writeln;
 writeln("------------------------------------------------------------------------------------");
@@ -464,7 +464,7 @@ forall (ii in Nodes) do
 	writeln("Node ",ii,":");
 	forall (ff in Functions) do
 		if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
-			write("	F",ff, ": ",(AreaLocations(ii)/RealAreaLocations(ii))*getsol(FunctionsCoverage(ff,ii)));
+			write("	F",ff, ": ",getsol(FunctionsCoverage(ff,ii)));
 				if(getsol(FunctionsCentrePlacement(ff,ii))=1) then
 					write(" (centre)");
 				end-if
