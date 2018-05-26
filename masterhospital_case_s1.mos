@@ -211,6 +211,9 @@ declarations
 	FloorVariable:             dynamic array(Functions, Floors)                   of mpvar; !p
 end-declarations	
 
+fopen("output_case_s1.dat", F_OUTPUT+F_APPEND);
+setparam("XPRS_VERBOSE",true);
+
 !Creating the binary variables x_fi
 forall (ff in Functions, ii in Nodes) do
 	if (Xplace(ff,ii)=1) then
@@ -362,6 +365,7 @@ forall (ee in Floors) do
 		sum(ii in NodesFloors(ee), ff in Functions) AreaFunctions(ff)*FunctionsOceanview(ff)*FunctionsCentrePlacement(ff,ii) <= sum(ii in NodesFloors(ee)) Oceanview(ii)*AreaLocations(ii);
 end-do	
 
+
 !-----------------------------------------------------------------------------------------------------
 
 starttime := gettime;
@@ -372,8 +376,10 @@ minimize(TotalDistanceProximity);
 endtime := gettime;
 
 usedtime := endtime - starttime;
-fopen("output_case_s1.dat", F_OUTPUT+F_APPEND);
-setparam("XPRS_VERBOSE",true);
+
+writeln;
+write("Date and time: ", datetime(SYS_NOW));
+writeln;
 writeln(' Run time: ' + usedtime);
 
 writeln("");

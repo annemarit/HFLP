@@ -2,7 +2,7 @@ nFunctions:               57
 nNodes:                   88
 nPerspectives:            1
 nFloors:                  5
-NodesAreaIncrease:        1.05
+NodesAreaIncrease:        1.0
 
 Weights:        [1.0]
 
