@@ -9,7 +9,7 @@ uses "mmsystem";
 
 parameters
 DataFile          = 'datafile_technical_P2.txt';
-ProximityFile     = 'proximity_technical.txt';
+ProximityFile     = 'proximity_technical_perspectives.txt';
 NeighbourFile     = 'neighbours_technical.txt';
 DistanceFile      = 'distances_technical.txt';
 SpecificationFile = 'specifications_technical.txt';
