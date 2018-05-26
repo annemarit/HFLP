@@ -10,7 +10,7 @@ parameters
 DataFile          = 'datafile_case_s2_f3_v1_htl.txt';
 ProximityFile     = 'proximity_case_s2.txt';
 NeighbourFile     = 'neighbours_case_s2_f3_htl.txt';
-DistanceFile      = 'distances_case_s2_f3.txt';
+DistanceFile      = 'distances_case_s2_f3_1st.txt';
 SpecificationFile = 'specifications_case_s2_f3_v1_htl.txt';
 end-parameters
 
