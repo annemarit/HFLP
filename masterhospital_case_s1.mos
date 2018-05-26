@@ -368,12 +368,12 @@ setparam("XPRS_VERBOSE",true);
 !-----------------------------------------------------------------------------------------------------
 
 starttime := gettime;
-fopen("output_case_s1.dat", F_OUTPUT+F_APPEND);
+
 !Minimizes the function
 minimize(TotalDistanceProximity);
 
 endtime := gettime;
-
+fopen("output_case_s1.dat", F_OUTPUT+F_APPEND);
 usedtime := endtime - starttime;
 
 writeln;
