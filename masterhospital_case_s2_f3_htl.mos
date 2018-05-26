@@ -415,7 +415,7 @@ endtime := gettime;
 usedtime := endtime - starttime;
 
 
-fopen("output_case_s2_f3.dat", F_OUTPUT+F_APPEND);
+fopen("output_case_s2_f3_htl.dat", F_OUTPUT+F_APPEND);
 writeln(' Run time: ' + usedtime);
 
 writeln("");
