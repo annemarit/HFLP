@@ -1,5 +1,5 @@
 nFunctions:               13          
-nNodes:                   19
+nNodes:                   18
 nPerspectives:            1
 nFloors:                  3
 MinimumFraction:          0.0
@@ -9,10 +9,10 @@ NodesAreaIncrease:        1.05
 Weights:        [1.0]
 
 !Size of functions in m^2
-AreaFunctions:	       [ 350 250 50	 380			
+AreaFunctions:	       [ 350 200 50	 380			
                          343 244 248 195			
                          351 272 208 199			
-                         250 ]
+                         50 ]
 
 !Tells how many nodes a function can be spread across
 MaxSpreadFunctions:    [ 3 3 1 3

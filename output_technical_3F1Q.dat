@@ -1,0 +1,108 @@
+
+
+------------------------------------------------------------------------------------
+Objective value: 0
+Run time: 0.501
+------------------------------------------------------------------------------------
+
+All functions placed in the building with fraction:
+ 
+Node 1:
+Node 2:
+Node 3:
+Node 4:
+Node 5:
+Node 6:
+Node 7:
+Node 8:
+Node 9:
+Node 10:
+Node 11:
+Node 12:
+Node 13:
+Node 14:
+Node 15:
+Node 16:
+Node 17:
+Node 18:
+ 
+ 
+F1 exists in nodes: 
+F2 exists in nodes: 
+F3 exists in nodes: 
+F4 exists in nodes: 
+F5 exists in nodes: 
+F6 exists in nodes: 
+F7 exists in nodes: 
+F8 exists in nodes: 
+F9 exists in nodes: 
+F10 exists in nodes: 
+F11 exists in nodes: 
+F12 exists in nodes: 
+F13 exists in nodes: 
+
+
+------------------------------------------------------------------------------------
+Objective value: 1261
+Run time: 87.882
+------------------------------------------------------------------------------------
+
+All functions placed in the building with fraction:
+ 
+Node 1:
+	F2: 0.321905
+	F4: 0.678095
+Node 2:
+	F4: 1 (centre)
+Node 3:
+	F9: 1 (centre)
+Node 4:
+	F2: 1 (centre)
+Node 5:
+	F3: 0.4329 (centre)
+Node 6:
+	F9: 1
+Node 7:
+	F12: 0.758095 (centre)
+	F13: 0.190476 (centre)
+Node 8:
+	F5: 1
+Node 9:
+	F7: 0.944762 (centre)
+Node 10:
+	F5: 0.151515
+	F8: 0.848485
+Node 11:
+	F5: 1 (centre)
+Node 12:
+	F8: 1 (centre)
+Node 13:
+	F10: 0.207619
+	F11: 0.792381 (centre)
+Node 14:
+	F10: 1 (centre)
+Node 15:
+	F1: 0.481905
+	F6: 0.489524
+Node 16:
+	F1: 0.935065
+	F10: 0.0649351
+Node 17:
+	F6: 1 (centre)
+Node 18:
+	F1: 1 (centre)
+ 
+ 
+F1 exists in nodes:15 16 18  
+F2 exists in nodes:1 4  
+F3 exists in nodes:5  
+F4 exists in nodes:1 2  
+F5 exists in nodes:8 10 11  
+F6 exists in nodes:15 17  
+F7 exists in nodes:9  
+F8 exists in nodes:10 12  
+F9 exists in nodes:3 6  
+F10 exists in nodes:13 14 16  
+F11 exists in nodes:13  
+F12 exists in nodes:7  
+F13 exists in nodes:7  
