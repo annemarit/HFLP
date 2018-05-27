@@ -1,7 +1,7 @@
 nFunctions:               10          
 nNodes:                   12
 nPerspectives:            1
-nFloors:                  1
+nFloors:                  2
 MinimumFraction:          0.0
 MinimumFunctionFraction:  0.5
 NodesAreaIncrease:        1.05
