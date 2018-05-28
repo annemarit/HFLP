@@ -405,6 +405,7 @@ end-do
 	
 
 setparam("XPRS_VERBOSE",true);
+setparam("XPRS_MIPRELSTOP",0.01);
 !-----------------------------------------------------------------------------------------------------
 
 starttime := gettime;
@@ -417,6 +418,7 @@ endtime := gettime;
 usedtime := endtime - starttime;
 
 fopen("output_case_s2_f1_51.dat", F_OUTPUT+F_APPEND);
+
 writeln;
 write("Date and time: ", datetime(SYS_NOW));
 writeln;
