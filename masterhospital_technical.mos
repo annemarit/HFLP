@@ -280,7 +280,7 @@ end-do
 writeln("------------------------------------------------------");
 
 
-!fopen("output_technical.dat", F_OUTPUT+F_APPEND);
+fopen("output_technical.dat", F_OUTPUT+F_APPEND);
 
 !Declaration the objective function and constraints
 declarations
@@ -454,7 +454,7 @@ forall (ii in Nodes) do
 	end-do
 end-do
 
-!fclose(F_OUTPUT);
+fclose(F_OUTPUT);
 
 
 end-model
