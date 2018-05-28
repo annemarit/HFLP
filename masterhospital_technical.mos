@@ -9,7 +9,7 @@ uses "mmsystem";
 
 parameters
 DataFile          = 'datafile_technical.txt';
-ProximityFile     = 'proximity_technical.txt';
+ProximityFile     = 'proximity_case_s2.txt';
 NeighbourFile     = 'neighbours_technical.txt';
 DistanceFile      = 'distances_technical.txt';
 SpecificationFile = 'specifications_technical.txt';
@@ -49,6 +49,8 @@ Functions    :=  1..nFunctions;
 Nodes        :=  1..nNodes;
 Perspectives :=  1..nPerspectives;
 Floors       :=  1..nFloors;
+
+setparam("XPRS_VERBOSE",true);
 
 !Declaring the parameters
 declarations
@@ -253,6 +255,8 @@ forall (ff in Functions, ee in Floors) do
 	FloorVariable(ff,ee) is_binary;
 end-do
 
+
+
 !Lock functions to the same floor
 forall(ff in Functions) do
 	forall(gg in Functions) do
@@ -276,7 +280,7 @@ end-do
 writeln("------------------------------------------------------");
 
 
-fopen("output_technical.dat", F_OUTPUT+F_APPEND);
+!fopen("output_technical.dat", F_OUTPUT+F_APPEND);
 
 !Declaration the objective function and constraints
 declarations
@@ -403,7 +407,7 @@ forall (ff in Functions, ll in Floors) do
 end-do
 
 setparam("XPRS_VERBOSE",true);
-setparam('XPRS_maxtime',-388800) ;
+setparam('XPRS_maxtime',-259200) ;
 !-----------------------------------------------------------------------------------------------------
 
 starttime := gettime;
@@ -434,10 +438,8 @@ writeln;
 writeln("Functions placed in locations (Functions, Nodes) 1:");
 forall(ff in Functions) do
 	forall(ii in Nodes) do
-		if (ii>84) then	
-			if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
-				writeln("( ", ff, " ", ii, " ) 1");
-			end-if
+		if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
+			writeln("( ", ff, " ", ii, " ) 1");
 		end-if
 	end-do
 end-do
@@ -452,7 +454,7 @@ forall (ii in Nodes) do
 	end-do
 end-do
 
-fclose(F_OUTPUT);
+!fclose(F_OUTPUT);
 
 
 end-model
