@@ -50,8 +50,6 @@ Nodes        :=  1..nNodes;
 Perspectives :=  1..nPerspectives;
 Floors       :=  1..nFloors;
 
-setparam("XPRS_VERBOSE",true);
-
 !Declaring the parameters
 declarations
 	AreaFunctions:                   array(Functions)                                       of integer;
@@ -279,8 +277,6 @@ end-do
 
 writeln("------------------------------------------------------");
 
-setparam("XPRS_VERBOSE",true);
-
 
 !Declaration the objective function and constraints
 declarations
@@ -406,9 +402,9 @@ forall (ff in Functions, ll in Floors) do
 		sum(ii in NodesFloors(ll)) FunctionsCentrePlacement(ff,ii) <= sum(ee in Floors) FloorVariable(ff,ee);
 end-do
 
-fopen("output_technical.dat", F_OUTPUT+F_APPEND);
+
+
 setparam("XPRS_VERBOSE",true);
-setparam('XPRS_maxtime',-259200) ;
 !-----------------------------------------------------------------------------------------------------
 
 starttime := gettime;
@@ -419,7 +415,9 @@ minimize(TotalDistanceProximity);
 endtime := gettime;
 
 usedtime := endtime - starttime;
-
+fopen("output_technical.dat", F_OUTPUT+F_APPEND);
+setparam("XPRS_VERBOSE",true);
+setparam('XPRS_maxtime',-259200) ;
 writeln(' Run time: ' + usedtime);
 
 
