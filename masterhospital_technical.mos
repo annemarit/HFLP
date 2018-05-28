@@ -405,6 +405,7 @@ end-do
 
 
 setparam("XPRS_VERBOSE",true);
+setparam('XPRS_maxtime',-259200);
 !-----------------------------------------------------------------------------------------------------
 
 starttime := gettime;
@@ -417,7 +418,7 @@ endtime := gettime;
 usedtime := endtime - starttime;
 fopen("output_technical.dat", F_OUTPUT+F_APPEND);
 setparam("XPRS_VERBOSE",true);
-setparam('XPRS_maxtime',-259200) ;
+
 writeln(' Run time: ' + usedtime);
 
 
