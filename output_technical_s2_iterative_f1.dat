@@ -1,0 +1,61 @@
+
+
+------------------------------------------------------------------------------------
+Objective value: 889
+Run time: 0.154
+------------------------------------------------------------------------------------
+
+All functions placed in the building with fraction:
+ 
+Node 1:
+	F8: 0.742857 (centre)
+Node 2:
+	F5: 1
+Node 3:
+	F2: 0.761905 (centre)
+	F3: 0.190476 (centre)
+Node 4:
+	F5: 0.277056
+	F12: 0.722944
+Node 5:
+	F5: 1 (centre)
+Node 6:
+	F12: 1 (centre)
+Node 7:
+Node 8:
+Node 9:
+Node 10:
+Node 11:
+Node 12:
+Node 13:
+Node 14:
+Node 15:
+Node 16:
+Node 17:
+Node 18:
+Node 19:
+Node 20:
+	F4: 0.351364 (centre)
+	F7: 0.229311 (centre)
+	F9: 0.324549 (centre)
+	F13: 0.0462321 (centre)
+Node 21:
+	F1: 0.323625 (centre)
+	F6: 0.225613 (centre)
+	F10: 0.251503 (centre)
+	F11: 0.192325 (centre)
+ 
+ 
+F1 exists in nodes: 21  
+F2 exists in nodes: 3  
+F3 exists in nodes: 3  
+F4 exists in nodes: 20  
+F5 exists in nodes: 2 4 5  
+F6 exists in nodes: 21  
+F7 exists in nodes: 20  
+F8 exists in nodes: 1  
+F9 exists in nodes: 20  
+F10 exists in nodes: 21  
+F11 exists in nodes: 21  
+F12 exists in nodes: 4 6  
+F13 exists in nodes: 20  
