@@ -1,5 +1,5 @@
 nFunctions:               13          
-nNodes:                   21
+nNodes:                   18
 nPerspectives:            1
 nFloors:                  3
 MinimumFraction:          0.0
@@ -27,8 +27,7 @@ RealAreaLocations:     [ !Floor 1
                          250 200 250 110 110 110
                          !Floor 3
                          250 200 250 110 110 110 
-			 !Floor-nodes
-			 1030 1030 1030]
+							]
 
 !Tells how many functions a node could contain
 MaxFunctionsCapacity:[   !Floor 1
@@ -36,8 +35,7 @@ MaxFunctionsCapacity:[   !Floor 1
                          !Floor 2
                          2 2 2 2 1 1
                          !Floor 3
-                         2 2 2 2 1 1 
-			 10 10 10 ]
+                         2 2 2 2 1 1 ]
 
 !Tells how many function centres a node could contain
 MaxCentresCapacity:  [   !Floor 1
@@ -46,4 +44,4 @@ MaxCentresCapacity:  [   !Floor 1
                          2 2 2 1 1 1
                          !Floor 3
                          2 2 2 1 1 1 
-			 10 10 10 ]
+						]
