@@ -8,11 +8,11 @@ uses "mmxprs";
 uses "mmsystem";
 
 parameters
-DataFile          = 'datafile_technical.txt';
-ProximityFile     = 'proximity_technical.txt';
+DataFile          = 'datafile_technical_basecase.txt';
+ProximityFile     = 'proximity_technical_basecase.txt';
 NeighbourFile     = 'neighbours_technical_lessneighbour.txt';
-DistanceFile      = 'distances_technical.txt';
-SpecificationFile = 'specifications_technical.txt';
+DistanceFile      = 'distances_technical_basecase.txt';
+SpecificationFile = 'specifications_technical_basecase.txt';
 end-parameters
 
 declarations
