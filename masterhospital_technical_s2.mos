@@ -7,9 +7,9 @@ uses "mmxprs";
 uses "mmsystem";
 
 parameters
-DataFile          = 'datafile_technical_3F1Q.txt';
+DataFile          = 'datafile_technical_s2.txt';
 ProximityFile     = 'proximity_technical_3F1Q.txt';
-DistanceFile      = 'distances_technical_3F1Q.txt';
+DistanceFile      = 'distances_technical_s2.txt';
 SpecificationFile = 'specifications_technical_s2.txt';
 NeighbourFile     = 'neighbours_technical_3F1Q.txt';
 end-parameters
