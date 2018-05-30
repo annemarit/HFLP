@@ -1,0 +1,121 @@
+
+Reading Problem /xprs_19aeaf0
+Problem Statistics
+     1042482 (      0 spare) rows
+     1013091 (      0 spare) structural columns
+     5090840 (      0 spare) non-zero elements
+Global Statistics
+        7763 entities        0 sets        0 set members
+
+Reading Problem /xprs_1c62af0
+Problem Statistics
+     1042482 (      0 spare) rows
+     1013091 (      0 spare) structural columns
+     5090840 (      0 spare) non-zero elements
+Global Statistics
+        7763 entities        0 sets        0 set members
+
+Reading Problem /xprs_f7caf0
+Problem Statistics
+     1042482 (      0 spare) rows
+     1013091 (      0 spare) structural columns
+     5090840 (      0 spare) non-zero elements
+Global Statistics
+        7763 entities        0 sets        0 set members
+Minimizing MILP /xprs_f7caf0
+Original problem has:
+   1042482 rows      1013091 cols      5090840 elements      7763 globals
+Presolved problem has:
+    933098 rows       929261 cols      3711577 elements      6517 globals
+LP relaxation tightened
+Symmetric problem: generators: 1, support set: 368
+ Number of orbits: 184, largest orbit: 2
+Will try to keep branch and bound tree memory usage below 352.1Gb
+Starting concurrent solve with dual, primal and barrier (22 threads)
+
+                           Concurrent-Solve,  24s
+            Dual                      Primal                     Barrier      
+    objective   dual inf       objective   sum inf         p.obj.     d.obj.  
+ D  254.00000   .0000000 |  p  250.00000  114.14361 |  B  5.592E+08 -928868.92
+ D  1353.0000   .0000000 |  p  250.00000  114.11116 |  B  5.592E+08 -928868.92
+ D  1537.0010   .0000000 |  p  250.00000  109.07212 |  B  1.512E+08 -3220793.9
+ D  1623.0014   .0000000 |  p  250.00000  104.39702 |  B  1.512E+08 -3220793.9
+ D  1932.0002   .0000000 |  p  309.30545  79.744771 |  B  1.056E+08 -9596259.0
+ D  2175.0006   .0000000 |  p  309.30545  75.581070 |  B  50065032. -11609313.
+ D  2400.0008   .0000000 |  p  1808.6402  69.858302 |  B  50065032. -11609313.
+ D  2493.0005   .0000000 |  p  2508.9535  63.875712 |  B  12240644. -3408101.1
+ D  2582.0001   .0000000 |  p  2508.9535  62.605727 |  B  2309484.7 -1120373.3
+ D  2622.0003   .0000000 |  p  2508.9535  60.708692 |  B  2309484.7 -1120373.3
+ D  2843.0003   .0000000 |  p  2508.9535  59.528017 |  B  811346.68 -584444.91
+ D  3096.0004   .0000000 |  p  2508.9535  58.777299 |  B  286820.58 -400451.51
+ D  3246.0002   .0000000 |  p  2508.9535  57.946591 |  B  286820.58 -400451.51
+ D  3270.5355   .0000000 |  p  3435.8813  55.464856 |  B  112158.85 -257055.75
+ D  3278.1085   .0000000 |  p  3718.3417  48.875047 |  B  68257.885 -174661.34
+ D  3278.1086   .0000000 |  p  4257.3094  46.961389 |  B  68257.885 -174661.34
+ D  3278.1090   .0000000 |  p  5011.9879  43.430715 |  B  43640.547 -87897.783
+ D  3280.0458   .0000000 |  p  5711.8562  41.181668 |  B  36059.512 -63150.736
+ D  3389.1348   .0000000 |  p  5711.8562  40.288248 |  B  36059.512 -63150.736
+ D  3537.6415   .0000000 |  p  6183.7567  38.494780 |  B  27121.525 -44321.578
+
+                           Concurrent-Solve,  40s
+            Dual                      Primal                     Barrier      
+    objective   dual inf       objective   sum inf         p.obj.     d.obj.  
+ D  3597.0349   .0000000 |  p  6183.7567  37.695809 |  B  25628.138 -43164.610
+ D  3622.0348   .0000000 |  p  6183.7567  36.431123 |  B  25628.138 -43164.610
+ D  3674.5938   .0000000 |  p  6792.8920  36.148554 |  B  23627.001 -37678.007
+ D  3691.3398   .0000000 |  p  6984.8184  35.673594 |  B  16933.277 -27572.246
+ D  3697.0361   .0000000 |  p  6984.8184  34.333360 |  B  16933.277 -27572.246
+ D  3817.0346   .0000000 |  p  7601.1617  32.995037 |  B  14974.911 -20343.116
+ D  3821.4576   .0000000 |  p  9194.5059  31.391342 |  B  11035.241 -14284.412
+ D  3890.4765   .0000000 |  p  9194.5059  30.755575 |  B  11035.241 -14284.412
+ D  3905.0347   .0000000 |  p  9194.5059  29.935017 |  B  9251.4111 -7086.7657
+ D  3913.0348   .0000000 |  p  10149.716  28.228273 |  B  7592.3721 -5509.7603
+ D  3952.0348   .0000000 |  p  10149.716  26.840378 |  B  7592.3721 -5509.7603
+ D  3952.0349   .0000000 |  p  11697.807  26.367547 |  B  5813.4883 -544.33961
+ D  3980.7625   .0000000 |  p  11697.807  24.477105 |  B  5524.8481  2321.8336
+ D  4006.2959   .0000000 |  p  11697.807  23.743834 |  B  5524.8481  2321.8336
+ D  4020.0351   .0000000 |  p  13017.775  23.077790 |  B  4832.4050  3647.1042
+ D  4056.0351   .0000000 |  p  13860.321  22.287397 |  B  4411.0589  4023.6134
+ D  4090.0349   .0000000 |  p  13860.321  21.084553 |  B  4411.0589  4023.6134
+ D  4090.0353   .0000000 |  p  13860.321  20.857362 |  B  4309.8003  4264.4762
+ D  4115.3099   .0000000 |  p  15379.571  20.423215 |  B  4289.4657  4285.1928
+ D  4151.8600   .0000000 |  p  15379.571  19.868881 |  B  4289.4657  4285.1928
+
+                           Concurrent-Solve,  70s
+            Dual                      Primal                     Barrier      
+    objective   dual inf       objective   sum inf         p.obj.     d.obj.  
+ D  4202.0352   .0000000 |  p  15379.571  19.372053 |  B  4287.3190  4286.9350
+ D  4220.2703   .0000000 |  p  16910.973  18.778060 |  B  4287.1175  4287.1163
+ D  4245.2849   .0000000 |  p  16910.973  17.507598 |  B  4287.1175  4287.1163
+ D  4256.0349   .0000000 |  p  16910.973  17.039403 |  B  4287.1169  4287.1169
+ D  4271.4195   .0000000 |  p  16910.973  16.611251 |           crossover     
+ D  4271.4195   .0000000 |  p  16910.973  16.181814 |           crossover     
+ D  4271.4195   .0000000 |  p  18017.842  14.932691 |           crossover     
+ D  4271.6286   .0000000 |  p  18017.842  14.592040 |           crossover     
+----- interrupted ------ | ----- interrupted ------ | ------- optimal --------
+Concurrent statistics:
+      Dual: 17830 simplex iterations, 47.86s
+    Primal: 31126 simplex iterations, 58.16s
+   Barrier: 28 barrier and 0 simplex iterations, 47.66s
+            Barrier used 22 threads 12 cores, L1\L2 cache: 32K\20480K
+            Barrier used AVX support
+Optimal solution found
+
+   Its         Obj Value      S   Ninf  Nneg        Sum Inf  Time
+     0       4287.116903      P      0     0        .000000    78
+Barrier solved problem
+  28 barrier iterations in 78s
+
+Final objective                         : 4.287116903193066e+03
+  Max primal violation      (abs / rel) : 5.551e-17 / 4.164e-17
+  Max dual violation        (abs / rel) : 3.709e-12 / 3.709e-12
+  Max complementarity viol. (abs / rel) :       0.0 /       0.0
+All values within tolerances
+
+Starting root cutting & heuristics
+
+ Its Type    BestSoln    BestBound   Sols    Add    Del     Gap     GInf   Time
+   1  K                4348.471717      0    517      0              620    274
+   2  K                4369.061078      0    609    383              527    301
+   3  K                4381.564946      0    875    576              776    330
+   4  K                4391.485657      0   
