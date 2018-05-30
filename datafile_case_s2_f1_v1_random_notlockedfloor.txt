@@ -4,7 +4,7 @@ nPerspectives:            1
 nFloors:                  5
 MinimumFraction:          0.0
 MinimumFunctionFraction:  0.0
-NodesAreaIncrease:        1.055
+NodesAreaIncrease:        1.06
 
 Weights:        [1.0]
 
