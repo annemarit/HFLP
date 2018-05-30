@@ -373,7 +373,7 @@ starttime := gettime;
 minimize(TotalDistanceProximity);
 
 endtime := gettime;
-fopen("output_case_s1.dat", F_OUTPUT+F_APPEND);
+fopen("output_case_s1_random.dat", F_OUTPUT+F_APPEND);
 usedtime := endtime - starttime;
 
 writeln;
