@@ -417,7 +417,7 @@ endtime := gettime;
 
 
 usedtime := endtime - starttime;
-fopen("output_case_s2_f2_random_rerun.dat", F_OUTPUT+F_APPEND);
+fopen("output_case_s2_f2_random_rerun_time.dat", F_OUTPUT+F_APPEND);
 writeln(' Run time: ' + usedtime);
 
 writeln("");
