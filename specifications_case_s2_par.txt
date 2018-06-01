@@ -214,23 +214,7 @@ LockedFunctionsCentre: [
 ( 44 ) 20
 ( 45 ) 19
 	!Lock all centres from previous steps (floor 2)
-( 11 ) 50
-( 17 ) 51
-( 18 ) 40
-( 24 ) 38
-( 25 ) 44
-( 28 ) 29
-( 29 ) 43
-( 30 ) 32
-( 32 ) 28
-( 33 ) 31
-( 35 ) 37
-( 36 ) 34
-( 37 ) 47
-( 38 ) 35
-( 41 ) 49
-( 43 ) 47
-( 55 ) 46
+
 	!Lock all centres from previous steps (floor 3)
 	( 23 ) 69
 ( 27 ) 56
