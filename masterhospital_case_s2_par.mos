@@ -424,8 +424,10 @@ writeln("");
 writeln("Centres locked to locations (Function) Node:");
 forall(ff in Functions) do
 	forall(ii in Nodes) do
-		if(getsol(FunctionsCentrePlacement(ff,ii))=1) then
-			writeln("( ", ff, " ) ", ii);
+		if(ii>70 and ii>75) then			
+			if(getsol(FunctionsCentrePlacement(ff,ii))=1) then
+				writeln("( ", ff, " ) ", ii);
+			end-if
 		end-if
 	end-do
 end-do
@@ -434,8 +436,10 @@ writeln;
 writeln("Functions placed in locations (Functions, Nodes) 1:");
 forall(ff in Functions) do
 	forall(ii in Nodes) do
-		if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
-			writeln("( ", ff, " ", ii, " ) 1");
+		if(ii>70 and ii>75) then
+			if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
+				writeln("( ", ff, " ", ii, " ) 1");
+			end-if
 		end-if
 	end-do
 end-do
