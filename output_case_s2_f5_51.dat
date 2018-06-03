@@ -1,5 +1,6 @@
 
-Date and time: 2018-05-25T20:51:04,651 Run time: 1.88
+Date and time: 2018-05-27T13:59:28,833
+ Run time: 1.862
 
 Objective value: 3910
 
@@ -186,10 +187,10 @@ All functions placed in the building with fraction:
 ( 48 92 ) 0.309174
 ( 50 92 ) 0.236695
 
-Date and time: 2018-05-26T09:12:15,592
- Run time: 1.958
+Date and time: 2018-05-27T14:58:43,007
+ Run time: 1.996
 
-Objective value: 3910
+Objective value: 3783
 
 Centres locked to locations (Function) Node:
 ( 1 ) 89
@@ -373,14 +374,3 @@ All functions placed in the building with fraction:
 ( 26 92 ) 0.0689776
 ( 48 92 ) 0.309174
 ( 50 92 ) 0.236695
-
-Date and time: 2018-05-27T09:52:00,912
- Run time: 1.532
-
-Objective value: 0
-
-Centres locked to locations (Function) Node:
-
-Functions placed in locations (Functions, Nodes) 1:
-
-All functions placed in the building with fraction:
