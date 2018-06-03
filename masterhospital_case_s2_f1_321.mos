@@ -405,7 +405,7 @@ end-do
 	
 
 setparam("XPRS_VERBOSE",true);
-setparam("XPRS_MIPRELSTOP",0.03);
+setparam("XPRS_MIPRELSTOP",0.02);
 !-----------------------------------------------------------------------------------------------------
 
 starttime := gettime;
