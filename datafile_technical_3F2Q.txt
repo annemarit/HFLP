@@ -10,11 +10,11 @@ Weights:        [1.0]
 
 !Size of functions in m^2
 AreaFunctions:	       [ 350 250 50	180 200	
-		                 343 244 61	187 195
+		                 350 250 50	180 200
 		                 350 250 50	180 200	
-		                 343 244 61	187 195
+		                 350 250 50	180 200
 		                 350 250 50	180 200	
-		                 343 244 61	187 195	]
+		                 350 250 50	180 200	]
 
 !Tells how many nodes a function can be spread across
 MaxSpreadFunctions:    [ 3 3 1 2 2
