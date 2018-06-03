@@ -1,4 +1,402 @@
- Run time: 30.458
+ Run time: 1.741
+
+Objective value: 0
+
+Centres locked to locations (Function) Node:
+
+Functions placed in locations (Functions, Nodes) 1:
+
+All functions so far placed in the building with fraction:
+ Run time: 1.798
+
+Objective value: 0
+
+Centres locked to locations (Function) Node:
+
+Functions placed in locations (Functions, Nodes) 1:
+
+All functions so far placed in the building with fraction:
+ Run time: 1.707
+
+Objective value: 0
+
+Centres locked to locations (Function) Node:
+
+Functions placed in locations (Functions, Nodes) 1:
+
+All functions so far placed in the building with fraction:
+ Run time: 1.685
+
+Objective value: 0
+
+Centres locked to locations (Function) Node:
+
+Functions placed in locations (Functions, Nodes) 1:
+
+All functions so far placed in the building with fraction:
+ Run time: 1.779
+
+Objective value: 0
+
+Centres locked to locations (Function) Node:
+
+Functions placed in locations (Functions, Nodes) 1:
+
+All functions so far placed in the building with fraction:
+ Run time: 1.798
+
+Objective value: 0
+
+Centres locked to locations (Function) Node:
+
+Functions placed in locations (Functions, Nodes) 1:
+
+All functions so far placed in the building with fraction:
+ Run time: 1.841
+
+Objective value: 0
+
+Centres locked to locations (Function) Node:
+
+Functions placed in locations (Functions, Nodes) 1:
+
+All functions so far placed in the building with fraction:
+ Run time: 1.806
+
+Objective value: 0
+
+Centres locked to locations (Function) Node:
+
+Functions placed in locations (Functions, Nodes) 1:
+
+All functions so far placed in the building with fraction:
+ Run time: 1.919
+
+Objective value: 0
+
+Centres locked to locations (Function) Node:
+
+Functions placed in locations (Functions, Nodes) 1:
+
+All functions so far placed in the building with fraction:
+ Run time: 1.845
+
+Objective value: 0
+
+Centres locked to locations (Function) Node:
+
+Functions placed in locations (Functions, Nodes) 1:
+
+All functions so far placed in the building with fraction:
+ Run time: 1.565
+
+Objective value: 0
+
+Centres locked to locations (Function) Node:
+
+Functions placed in locations (Functions, Nodes) 1:
+
+All functions so far placed in the building with fraction:
+ Run time: 30.999
+
+Objective value: 11109
+
+Centres locked to locations (Function) Node:
+( 4 ) 37
+( 5 ) 34
+( 11 ) 32
+( 17 ) 51
+( 18 ) 49
+( 24 ) 38
+( 27 ) 30
+( 28 ) 39
+( 29 ) 47
+( 30 ) 50
+( 31 ) 35
+( 32 ) 41
+( 33 ) 44
+( 35 ) 28
+( 39 ) 31
+( 40 ) 43
+
+Functions placed in locations (Functions, Nodes) 1:
+( 4 35 ) 1
+( 4 36 ) 1
+( 4 37 ) 1
+( 5 33 ) 1
+( 5 34 ) 1
+( 5 46 ) 1
+( 11 29 ) 1
+( 11 32 ) 1
+( 17 51 ) 1
+( 18 46 ) 1
+( 18 48 ) 1
+( 18 49 ) 1
+( 24 33 ) 1
+( 24 38 ) 1
+( 27 30 ) 1
+( 28 39 ) 1
+( 28 40 ) 1
+( 28 45 ) 1
+( 29 47 ) 1
+( 30 47 ) 1
+( 30 48 ) 1
+( 30 50 ) 1
+( 31 35 ) 1
+( 32 29 ) 1
+( 32 41 ) 1
+( 32 44 ) 1
+( 33 44 ) 1
+( 35 28 ) 1
+( 35 40 ) 1
+( 39 31 ) 1
+( 40 42 ) 1
+( 40 43 ) 1
+
+All functions so far placed in the building with fraction:
+( 12 1 ) 0.968407
+( 26 2 ) 0.938095
+( 8 3 ) 1
+( 12 4 ) 1
+( 8 5 ) 0.0519481
+( 23 5 ) 0.852814
+( 12 6 ) 1
+( 15 7 ) 1
+( 1 8 ) 0.607143
+( 2 8 ) 0.392857
+( 13 9 ) 1
+( 2 10 ) 0.978355
+( 15 10 ) 0.021645
+( 2 11 ) 1
+( 14 12 ) 0.987013
+( 15 12 ) 0.000865801
+( 42 13 ) 1
+( 42 14 ) 1
+( 37 15 ) 0.39619
+( 43 15 ) 0.48
+( 41 16 ) 0.151515
+( 42 16 ) 0.281385
+( 41 17 ) 1
+( 1 19 ) 1
+( 1 20 ) 1
+( 13 21 ) 0.0419048
+( 55 21 ) 0.940952
+( 1 22 ) 0.354978
+( 3 22 ) 0.645022
+( 3 23 ) 1
+( 16 25 ) 0.952381
+( 6 26 ) 0.365714
+( 7 26 ) 0.259048
+( 9 26 ) 0.256508
+( 11 27 ) 0.678095
+( 27 27 ) 0.310476
+( 35 28 ) 1
+( 11 29 ) 0.329524
+( 32 29 ) 0.670476
+( 27 30 ) 1
+( 39 31 ) 0.831169
+( 11 32 ) 1
+( 5 33 ) 0.689524
+( 24 33 ) 0.310476
+( 5 34 ) 1
+( 4 35 ) 0.32381
+( 31 35 ) 0.666667
+( 4 36 ) 1
+( 4 37 ) 1
+( 24 38 ) 1
+( 28 39 ) 1
+( 28 40 ) 0.861905
+( 35 40 ) 0.0904762
+( 32 41 ) 1
+( 40 42 ) 0.705628
+( 40 43 ) 1
+( 32 44 ) 0.168831
+( 33 44 ) 0.831169
+( 28 45 ) 1
+( 5 46 ) 0.490476
+( 18 46 ) 0.509524
+( 29 47 ) 0.727619
+( 30 47 ) 0.272381
+( 18 48 ) 0.411255
+( 30 48 ) 0.562771
+( 18 49 ) 1
+( 30 50 ) 1
+( 17 51 ) 0.952381
+ Run time: 31.849
+
+Objective value: 11109
+
+Centres locked to locations (Function) Node:
+( 10 ) 69
+( 34 ) 56
+( 36 ) 53
+( 38 ) 63
+( 44 ) 52
+( 45 ) 60
+( 46 ) 59
+( 47 ) 62
+( 48 ) 61
+( 51 ) 58
+( 54 ) 57
+
+Functions placed in locations (Functions, Nodes) 1:
+( 10 66 ) 1
+( 10 68 ) 1
+( 10 69 ) 1
+( 25 65 ) 1
+( 34 55 ) 1
+( 34 56 ) 1
+( 36 52 ) 1
+( 36 53 ) 1
+( 36 55 ) 1
+( 38 63 ) 1
+( 44 52 ) 1
+( 45 60 ) 1
+( 46 59 ) 1
+( 46 60 ) 1
+( 46 65 ) 1
+( 47 62 ) 1
+( 47 63 ) 1
+( 48 54 ) 1
+( 48 61 ) 1
+( 48 64 ) 1
+( 48 67 ) 1
+( 51 58 ) 1
+( 54 54 ) 1
+( 54 57 ) 1
+
+All functions so far placed in the building with fraction:
+( 36 52 ) 0.348918
+( 44 52 ) 0.651082
+( 36 53 ) 1
+( 48 54 ) 0.92381
+( 54 54 ) 0.0761905
+( 34 55 ) 0.238095
+( 36 55 ) 0.761905
+( 34 56 ) 1
+( 54 57 ) 1
+( 51 58 ) 0.845714
+( 46 59 ) 1
+( 45 60 ) 0.895238
+( 46 60 ) 0.104762
+( 48 61 ) 1
+( 47 62 ) 1
+( 38 63 ) 0.701299
+( 47 63 ) 0.168831
+( 48 64 ) 1
+( 25 65 ) 0.310476
+( 46 65 ) 0.649524
+( 10 66 ) 1
+( 48 67 ) 1
+( 10 68 ) 1
+( 10 69 ) 1
+( 25 70 ) 1
+ Run time: 1.546
+
+Objective value: 0
+
+Centres locked to locations (Function) Node:
+
+Functions placed in locations (Functions, Nodes) 1:
+
+All functions so far placed in the building with fraction:
+ Run time: 1.618
+
+Objective value: 0
+
+Centres locked to locations (Function) Node:
+
+Functions placed in locations (Functions, Nodes) 1:
+
+All functions so far placed in the building with fraction:
+ Run time: 1.555
+
+Objective value: 0
+
+Centres locked to locations (Function) Node:
+
+Functions placed in locations (Functions, Nodes) 1:
+
+All functions so far placed in the building with fraction:
+ Run time: 1.559
+
+Objective value: 0
+
+Centres locked to locations (Function) Node:
+
+Functions placed in locations (Functions, Nodes) 1:
+
+All functions so far placed in the building with fraction:
+ Run time: 48.284
+
+Objective value: 11035
+
+Centres locked to locations (Function) Node:
+( 10 ) 66
+( 25 ) 69
+( 34 ) 56
+( 36 ) 53
+( 38 ) 63
+( 44 ) 60
+( 45 ) 52
+( 46 ) 59
+( 48 ) 61
+( 51 ) 58
+( 54 ) 57
+
+Functions placed in locations (Functions, Nodes) 1:
+( 10 58 ) 1
+( 10 65 ) 1
+( 10 66 ) 1
+( 25 68 ) 1
+( 25 69 ) 1
+( 34 55 ) 1
+( 34 56 ) 1
+( 36 52 ) 1
+( 36 53 ) 1
+( 36 55 ) 1
+( 38 63 ) 1
+( 44 60 ) 1
+( 45 52 ) 1
+( 46 59 ) 1
+( 46 62 ) 1
+( 46 65 ) 1
+( 47 68 ) 1
+( 48 54 ) 1
+( 48 61 ) 1
+( 48 64 ) 1
+( 48 67 ) 1
+( 51 58 ) 1
+( 54 54 ) 1
+( 54 57 ) 1
+
+All functions so far placed in the building with fraction:
+( 36 52 ) 0.301299
+( 45 52 ) 0.651082
+( 36 53 ) 1
+( 48 54 ) 0.92381
+( 54 54 ) 0.0438095
+( 34 55 ) 0.238095
+( 36 55 ) 0.761905
+( 34 56 ) 1
+( 54 57 ) 1
+( 10 58 ) 0.130476
+( 51 58 ) 0.845714
+( 46 59 ) 1
+( 44 60 ) 0.895238
+( 48 61 ) 1
+( 46 62 ) 1
+( 38 63 ) 0.701299
+( 48 64 ) 1
+( 10 65 ) 0.706667
+( 46 65 ) 0.293333
+( 10 66 ) 1
+( 48 67 ) 1
+( 25 68 ) 0.705628
+( 47 68 ) 0.294372
+( 25 69 ) 1
+( 47 70 ) 1
+ Run time: 39.545
 
 Objective value: 11005
 
@@ -41,9 +439,10 @@ Functions placed in locations (Functions, Nodes) 1:
 ( 51 53 ) 1
 ( 51 60 ) 1
 ( 54 66 ) 1
+( 54 68 ) 1
 
 All functions so far placed in the building with fraction:
-( 10 52 ) 0.291775
+( 10 52 ) 0.348918
 ( 44 52 ) 0.651082
 ( 45 53 ) 0.895238
 ( 51 53 ) 0.104762
@@ -51,8 +450,8 @@ All functions so far placed in the building with fraction:
 ( 47 55 ) 1
 ( 36 56 ) 0.298701
 ( 38 56 ) 0.701299
-( 36 57 ) 0.831169
-( 47 57 ) 0.168831
+( 36 57 ) 0.761905
+( 47 57 ) 0.238095
 ( 10 58 ) 1
 ( 46 59 ) 0.958095
 ( 51 60 ) 1
@@ -62,9 +461,10 @@ All functions so far placed in the building with fraction:
 ( 34 63 ) 1
 ( 46 64 ) 1
 ( 48 65 ) 0.92381
-( 10 66 ) 0.409988
+( 10 66 ) 0.333333
 ( 54 66 ) 0.590012
 ( 48 67 ) 1
-( 25 68 ) 1
+( 25 68 ) 0.705628
+( 54 68 ) 0.294372
 ( 25 69 ) 1
 ( 48 70 ) 1
