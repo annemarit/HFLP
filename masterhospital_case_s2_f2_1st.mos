@@ -417,6 +417,9 @@ endtime := gettime;
 
 usedtime := endtime - starttime;
 fopen("output_case_s2_f2_1st.dat", F_OUTPUT+F_APPEND);
+writeln;
+write("Date and time: ", datetime(SYS_NOW));
+writeln;
 writeln(' Run time: ' + usedtime);
 
 writeln("");

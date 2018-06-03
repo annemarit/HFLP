@@ -1,0 +1,76 @@
+nFunctions:               57
+nNodes:                   54
+nPerspectives:            1
+nFloors:                  5
+MinimumFraction:          0.0
+MinimumFunctionFraction:  0.0
+NodesAreaIncrease:        1.07
+
+Weights:        [1.0]
+
+!Size of functions in m^2
+AreaFunctions:         [ 641 311 190 316 494 144 102 243 101 435
+						 380 558 242 114 221 250 250 270 264 264
+						 264 130 197 197 197 197 197 706 191 252
+						 175 458  96 143 229 385 104  81  96 197
+						 133 505 126 188 188 455 135 883 883 676
+			 			 222 401 398 127 247 266 164 ]
+
+!Tells how many nodes a function could be spread across
+MaxSpreadFunctions:    [ 4 3 2 3 3 2 2 3 2 3
+					     3 3 3 2 3 3 3 3 3 3
+					     3 2 2 2 2 2 2 5 2 3
+					     2 3 2 2 3 3 2 2 2 2
+					     2 3 2 2 2 3 2 4 4 3
+					     3 3 3 2 3 3 2 ]
+
+!Size of areas in m^2
+RealAreaLocations:     [ !Floor 1
+						 208 200 220 110 220 220 208 200 220 110
+						 110 110 250 200 250 110 110 110 250 200
+						 250 110 110 110 250 375
+						 !Floor 2
+						 250 200 250 110 110 110 250 200 250 110
+						 110 110 250 200 250 110 110 110 250 200
+						 250 110 110 110 250
+						 !Floor 3
+						 3370
+						 !Floor 4
+						 2720
+						 !Floor 5
+						 1000
+						 ]
+
+!Tells how many functions a node could contain
+MaxFunctionsCapacity:[ !Floor 1
+					   2 2 2 2 2 2 2 2 2 2
+					   2 2 2 2 2 2 2 2 2 2
+					   2 2 2 2 2 3
+					   !Floor 2
+					   2 2 2 2 2 2 2 2 2 2
+					   2 2 2 2 2 2 2 2 2 2
+					   2 2 2 2 2
+					   !Floor 3
+					   11
+					   !Floor 4
+					   6
+					   !Floor 5
+					   4
+					   ]
+
+!Tells how many function centres a node could contain
+MaxCentresCapacity:  [ !Floor 1
+					   2 2 2 1 1 1 2 2 2 1
+					   1 1 2 2 2 1 1 1 2 2
+					   2 1 1 1 1 3
+					   !Floor 2
+					   2 2 2 1 1 1 2 2 2 1
+					   1 1 2 2 2 1 1 1 2 2
+					   2 1 1 1 1
+					   !Floor 3
+					   11
+					   !Floor 4
+					   6
+					   !Floor 5
+					   4
+					   ]
