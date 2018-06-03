@@ -191,6 +191,7 @@ LockedFunctions: [
 	( 7 26 ) 1
 	( 9 26 ) 1
 	
+	
 ]
 
 LockedMinimumFraction: [
@@ -199,6 +200,7 @@ LockedMinimumFraction: [
 ]
 
 LockFloor : [
+	!( Floors Functions ) 1
 	( 1 1 ) 1
 	( 1 2 ) 1
 	( 1 3 ) 1
