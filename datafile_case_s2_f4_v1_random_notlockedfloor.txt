@@ -4,7 +4,7 @@ nPerspectives:            1
 nFloors:                  5
 MinimumFraction:          0.0
 MinimumFunctionFraction:  0.0
-NodesAreaIncrease:        1.07
+NodesAreaIncrease:        1.06
 
 Weights:        [1.0]
 
@@ -59,7 +59,7 @@ MaxFunctionsCapacity:[ !Floor 1
 					   2 2 2 2 2 2 2 2 2 2
 					   2 2 2 2
 					   !Floor 5
-					   4
+					   5
 					   ]
 
 !Tells how many function centres a node could contain
@@ -78,5 +78,5 @@ MaxCentresCapacity:  [ !Floor 1
 					   2 2 2 2 2 1 1 1 2 2
 					   2 1 1 1
 					   !Floor 5
-					   4
+					   5
 					   ]
