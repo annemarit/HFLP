@@ -213,9 +213,9 @@ forall (ff in Functions, ii in Nodes) do
 		create(FunctionsCentrePlacement(ff, ii));
 		FunctionsCentrePlacement(ff, ii) is_binary;
 	end-if
-	if (LockedFunctionsCentre(ff) = ii) then
-		FunctionsCentrePlacement(ff,ii)>=1;
-	end-if
+	!if (LockedFunctionsCentre(ff) = ii) then
+	!	FunctionsCentrePlacement(ff,ii)>=1;
+	!end-if
 end-do
 
 !Creating the binary variables w_fi
