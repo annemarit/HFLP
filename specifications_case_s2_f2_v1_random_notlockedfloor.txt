@@ -162,7 +162,7 @@ LockedFunctionsCentre: [
 	!( Functions ) Nodes
 	!Ambulance central locked to ambulance building
 	( 16 ) 25
-	!( 17 ) 51
+	( 17 ) 51
 	
 	!---------------------------------------------------
 	!Lock all functions in floor 2 to floor 1
