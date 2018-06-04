@@ -59,7 +59,7 @@ LockedFunctionsCentre: [
 ]
 
 LockedFunctions: [
-	!( Functions Nodes )
+	!( Functions Nodes ) 1
 ]
 
 LockedMinimumFraction: [
