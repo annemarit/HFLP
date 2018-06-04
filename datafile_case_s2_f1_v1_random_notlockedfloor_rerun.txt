@@ -4,7 +4,7 @@ nPerspectives:            1
 nFloors:                  5
 MinimumFraction:          0.0
 MinimumFunctionFraction:  0.0
-NodesAreaIncrease:        1.05
+NodesAreaIncrease:        1.06
 
 Weights:        [1.0]
 
@@ -40,7 +40,7 @@ RealAreaLocations:     [ !Floor 1
 						 325 325 250 205 250 110 110 110 250 205
 						 250 110 110 110
 						 !Floor 5
-						 250 250 250 250
+						 250 400 250 400
 						 ]
 
 !Tells how many functions a node could contain
