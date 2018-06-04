@@ -266,7 +266,7 @@ All functions so far placed in the building with fraction:
 ( 25 69 ) 1
 ( 57 70 ) 1
 
- Run time: 13.489
+ Run time: 34.294
 
 Objective value: 13353
 
@@ -333,7 +333,7 @@ All functions so far placed in the building with fraction:
 ( 14 67 ) 0.430189
 ( 48 67 ) 0.569811
 ( 31 68 ) 0.500858
-( 57 68 ) 0.406518
+( 57 68 ) 0.499142
 ( 31 69 ) 1
 ( 57 70 ) 1
 
