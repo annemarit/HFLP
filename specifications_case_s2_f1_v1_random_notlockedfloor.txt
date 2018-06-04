@@ -123,8 +123,8 @@ FunctionsWindows: [
 	!( 45 ) 1 !Day area
 	!( 48 ) 1 !Bed ward medicine
 	!( 49 ) 1 !Bed ward 
-	!( 50 ) 1 !Bed ward orthopedics/surgery
-	!( 51 ) 1 !Patient hotel
+	( 50 ) 1 !Bed ward orthopedics/surgery
+	( 51 ) 1 !Patient hotel
 	!( 52 ) 1 !Children bed ward
 ]
 
