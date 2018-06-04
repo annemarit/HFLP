@@ -440,7 +440,7 @@ writeln;
 writeln("Functions placed in locations (Functions, Nodes) 1:");
 forall(ff in Functions) do
 	forall(ii in Nodes) do
-		if (ii<52 and ii>26) then	
+		if (ii<85 and ii>70) then	
 			if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
 				writeln("( ", ff, " ", ii, " ) 1");
 			end-if
