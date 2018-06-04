@@ -435,17 +435,17 @@ forall (ii in Nodes) do
 		end-if
 	end-do
 end-do
-writeln(" ");
-writeln(" ");
-forall (ff in Functions) do
-	write("F",ff," exists in nodes:");
-	forall (ii in Nodes) do
-		if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
-			write(ii," ");	
-		end-if
-	end-do
-	writeln(" ");
-end-do
+!writeln(" ");
+!writeln(" ");
+!forall (ff in Functions) do
+!	write("F",ff," exists in nodes:");
+!	forall (ii in Nodes) do
+!		if(getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
+!			write(ii," ");	
+!		end-if
+!	end-do
+!	writeln(" ");
+!end-do
 
 
 
