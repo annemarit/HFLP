@@ -8,7 +8,7 @@ uses "mmsystem";
 
 parameters
 DataFile          = 'datafile_case_s2_f5_v1_random_notlockedfloor.txt';
-ProximityFile     = 'proximity_case_s2.txt';
+ProximityFile     = 'proximity_case_s2_random.txt';
 NeighbourFile     = 'neighbours_case_s2_f5.txt';
 DistanceFile      = 'distances_case_s2_f5.txt';
 SpecificationFile = 'specifications_case_s2_f5_v1_random_notlockedfloor.txt';
