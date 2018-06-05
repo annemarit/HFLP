@@ -1,5 +1,5 @@
-nFunctions:               30          
-nNodes:                   39
+nFunctions:               24          
+nNodes:                   33
 nPerspectives:            1
 nFloors:                  3
 MinimumFraction:          0.0
@@ -13,16 +13,14 @@ AreaFunctions:	       [ 350 250 50	180 200
 		                 350 250 50	180 200
 		                 350 250 50	180 200	
 		                 350 250 50	180 200
-		                 350 250 50	180 200	
-		                 350 250 50	180 200	]
+		                 350 250 250 180	]
 
 !Tells how many nodes a function can be spread across
 MaxSpreadFunctions:    [ 3 3 1 2 2
                          3 3 1 2 2
                          3 3 1 2 2
                          3 3 1 2 2
-                         3 3 1 2 2
-                         3 3 1 2 2 ]
+                         3 3 3 2 ]
 
 !Size of areas in m^2
 RealAreaLocations:     [ !Floor 1
@@ -33,13 +31,12 @@ RealAreaLocations:     [ !Floor 1
                          250 200 250 110 110 110
                          !Floor 3
 			 			 250 200 250 110 110 110 
-                         250 200 250 110 110 110
                          !1
                          2060
                          !2
                          2060
                          !3
-                         2060]
+                         1030]
 
 !Tells how many functions a node could contain
 MaxFunctionsCapacity:[ !Floor 1
@@ -50,13 +47,12 @@ MaxFunctionsCapacity:[ !Floor 1
                          0 0 0 0 0 0
                          !Floor 3
                          0 0 0 0 0 0
-                       	 0 0 0 0 0 0
                          !1
                          0
                          !2
-                         9
+                         8
                          !3
-                         10 ]
+                         5 ]
 
 !Tells how many function centres a node could contain
 MaxCentresCapacity:  [ !Floor 1
@@ -67,10 +63,9 @@ MaxCentresCapacity:  [ !Floor 1
                          0 0 0 0 0 0
                          !Floor 3
                          0 0 0 0 0 0
-                         0 0 0 0 0 0
                          !1
                          0
                          !2
-                         9
+                         8
                          !3
-                         10 ]
+                         5 ]
