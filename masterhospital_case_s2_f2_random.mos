@@ -7,7 +7,7 @@ uses "mmxprs";
 uses "mmsystem";
 
 parameters
-DataFile          = 'datafile_case_s2_f2_v1_random.txt';
+DataFile          = 'datafile_case_s2_f2_v1_random_increase.txt';
 ProximityFile     = 'proximity_case_s2_random.txt';
 NeighbourFile     = 'neighbours_case_s2_f2.txt';
 DistanceFile      = 'distances_case_s2_f2.txt';
@@ -416,7 +416,7 @@ endtime := gettime;
 
 
 usedtime := endtime - starttime;
-fopen("output_case_s2_f2_random.dat", F_OUTPUT+F_APPEND);
+fopen("output_case_s2_f2_random_increase.dat", F_OUTPUT+F_APPEND);
 writeln(' Run time: ' + usedtime);
 
 writeln("");
