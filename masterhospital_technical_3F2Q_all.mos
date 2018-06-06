@@ -451,7 +451,7 @@ end-do
 
 
 
-fopen("output_technical_3F2Q_s2_f3.dat", F_OUTPUT+F_APPEND);
+fopen("output_technical_3F2Q_all.dat", F_OUTPUT+F_APPEND);
 writeln;
 writeln;
 writeln("------------------------------------------------------------------------------------");
