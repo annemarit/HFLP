@@ -7,11 +7,11 @@ uses "mmxprs";
 uses "mmsystem";
 
 parameters
-DataFile          = 'datafile_technical_3F2Q.txt';
+DataFile          = 'datafile_technical_3F2Q_f3.txt';
 ProximityFile     = 'proximity_technical_3F2Q.txt';
-DistanceFile      = 'distances_technical_3F2Q.txt';
-SpecificationFile = 'specifications_technical_3F2Q.txt';
-NeighbourFile     = 'neighbours_technical_3F2Q.txt';
+DistanceFile      = 'distances_technical_3F2Q_s2_it.txt';
+SpecificationFile = 'specifications_technical_3F2Q_f3.txt';
+NeighbourFile     = 'neighbours_technical_3F2Q_it.txt';
 end-parameters
 
 declarations
@@ -396,10 +396,10 @@ forall (ff in Functions) do
 end-do
 
 !Constraints (16)
-!forall (ff in Functions, ee in Floors) do
-!	Con16(ff,ee) :=
-!		FloorVariable(ff,ee) >= sum(ii in NodesFloors(ee)) FunctionsCentrePlacement(ff,ii);
-!end-do
+forall (ff in Functions, ee in Floors) do
+	Con16(ff,ee) :=
+		FloorVariable(ff,ee) >= sum(ii in NodesFloors(ee)) FunctionsCentrePlacement(ff,ii);
+end-do
 
 
 
