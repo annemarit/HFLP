@@ -61,7 +61,11 @@ All functions so far placed in the building with fraction:
 ( 57 83 ) 1
 ( 46 84 ) 1
 
+<<<<<<< HEAD
  Run time: 1.553
+=======
+ Run time: 0.094
+>>>>>>> 7f56a71bb5d1d1beef87c7f4ad9e73e57eb8e2af
 
 Objective value: 0
 
@@ -71,6 +75,7 @@ Functions placed in locations (Functions, Nodes) 1:
 
 All functions so far placed in the building with fraction:
 
+<<<<<<< HEAD
  Run time: 8.789
 
 Objective value: 12827
@@ -130,3 +135,5 @@ All functions so far placed in the building with fraction:
 ( 57 83 ) 1
 ( 15 84 ) 1
 
+=======
+>>>>>>> 7f56a71bb5d1d1beef87c7f4ad9e73e57eb8e2af
