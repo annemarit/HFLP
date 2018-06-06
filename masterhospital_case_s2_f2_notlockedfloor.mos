@@ -7,11 +7,11 @@ uses "mmxprs";
 uses "mmsystem";
 
 parameters
-DataFile          = 'datafile_case_s2_f2_v1_random_increase.txt';
-ProximityFile     = 'proximity_case_s2_random.txt';
+DataFile          = 'datafile_case_s2_f2_v1_notlockedfloor.txt';
+ProximityFile     = 'proximity_case_s2.txt';
 NeighbourFile     = 'neighbours_case_s2_f2.txt';
 DistanceFile      = 'distances_case_s2_f2.txt';
-SpecificationFile = 'specifications_case_s2_f2_v1_random.txt';
+SpecificationFile = 'specifications_case_s2_f2_v1_notlockedfloor.txt';
 end-parameters
 
 declarations
@@ -118,6 +118,7 @@ initializations from SpecificationFile
 	LockSameFloor;
 end-initializations
 
+
 !Creating WeightedProximity
 forall (ff in Functions, gg in Functions | ff < gg) do
 		WeightedProximity(ff, gg) := sum(pp in Perspectives) Weights(pp) * Proximity (pp, ff, gg);
@@ -151,7 +152,7 @@ forall (ff in Functions) do
 		if (LockFloor(ee,ff) = 1) then
 			forall (e2 in Floors | e2<>ee) do
 				forall (ii in NodesFloors(e2)) do
-					Xplace(ff,ii) := 0;
+						Xplace(ff,ii) := 0;
 				end-do
 			end-do
 		end-if
@@ -168,7 +169,7 @@ forall (ff in Functions) do
 				Xplace(ff,i2) := 0;
 			end-do
 		end-if
-	!Locked w (placement of function) If not neighbours or neighbours to the possible centre locations
+	!Locked w or t (placement of function) If not neighbours or neighbours to the possible centre locations
 		if (LockedFunctions(ff,ii)>=1 or LockedMinimumFraction(ff,ii)>0) then
 			forall (tt in NeighbourNodes(ii)) do
 				forall (ss in NeighbourNodes(tt)) do
@@ -205,8 +206,6 @@ declarations
 	RelationPlacement:         dynamic array(Functions, Nodes, Functions, Nodes)  of mpvar; !y
 	FloorVariable:             dynamic array(Functions, Floors)                   of mpvar; !p
 end-declarations	
-
-
 
 !Creating the binary variables x_fi
 forall (ff in Functions, ii in Nodes) do
@@ -401,11 +400,8 @@ forall (ff in Functions, ee in Floors) do
 		FloorVariable(ff,ee) >= sum(ii in NodesFloors(ee)) FunctionsCentrePlacement(ff,ii);
 end-do
 
-
-
 setparam("XPRS_VERBOSE",true);
 !-----------------------------------------------------------------------------------------------------
-	
 
 starttime := gettime;
 
@@ -414,9 +410,11 @@ minimize(TotalDistanceProximity);
 
 endtime := gettime;
 
-
 usedtime := endtime - starttime;
-fopen("output_case_s2_f2_random_increase.dat", F_OUTPUT+F_APPEND);
+
+
+fopen("output_case_s2_f2_notlockedfloor.dat", F_OUTPUT+F_APPEND);
+
 writeln(' Run time: ' + usedtime);
 
 writeln("");
@@ -449,12 +447,13 @@ writeln;
 writeln("All functions so far placed in the building with fraction:");
 forall (ii in Nodes) do
 	forall (ff in Functions) do
-		if(ii<52 and getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
+		if(ii>26 and ii<52 and getsol(FunctionsPlacement(ff,ii))=1 and getsol(FunctionsCoverage(ff,ii))>0) then
 			writeln("( ", ff, " ", ii, " ) ", getsol(FunctionsCoverage(ff,ii)));
 		end-if
 	end-do
 end-do
 
+writeln;
 fclose(F_OUTPUT);
 
 end-model
