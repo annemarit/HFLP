@@ -1,0 +1,268 @@
+ Run time: 1.346
+
+Objective value: 0
+
+Centres locked to locations (Function) Node:
+
+Functions placed in locations (Functions, Nodes) 1:
+
+All functions so far placed in the building with fraction:
+
+ Run time: 1.969
+
+Objective value: 11978
+
+Centres locked to locations (Function) Node:
+( 5 ) 83
+( 10 ) 80
+( 12 ) 74
+( 23 ) 77
+( 49 ) 71
+( 57 ) 78
+
+Functions placed in locations (Functions, Nodes) 1:
+( 5 81 ) 1
+( 5 82 ) 1
+( 5 83 ) 1
+( 10 79 ) 1
+( 10 80 ) 1
+( 12 73 ) 1
+( 12 74 ) 1
+( 12 76 ) 1
+( 23 75 ) 1
+( 23 77 ) 1
+( 49 71 ) 1
+( 49 72 ) 1
+( 49 75 ) 1
+( 57 76 ) 1
+( 57 78 ) 1
+
+All functions so far placed in the building with fraction:
+( 49 71 ) 1
+( 49 72 ) 1
+( 12 73 ) 1
+( 12 74 ) 1
+( 23 75 ) 0.296449
+( 49 75 ) 0.700935
+( 12 76 ) 0.604503
+( 57 76 ) 0.393373
+( 23 77 ) 1
+( 57 78 ) 1
+( 10 79 ) 0.806168
+( 10 80 ) 1
+( 5 81 ) 1
+( 5 82 ) 0.924384
+( 5 83 ) 1
+
+ Run time: 0.766
+
+Objective value: 4496
+
+Centres locked to locations (Function) Node:
+( 5 ) 83
+( 10 ) 77
+( 12 ) 73
+( 23 ) 84
+( 49 ) 72
+( 57 ) 78
+
+Functions placed in locations (Functions, Nodes) 1:
+( 5 81 ) 1
+( 5 82 ) 1
+( 5 83 ) 1
+( 10 75 ) 1
+( 10 76 ) 1
+( 10 77 ) 1
+( 12 73 ) 1
+( 12 74 ) 1
+( 12 79 ) 1
+( 23 79 ) 1
+( 23 84 ) 1
+( 49 71 ) 1
+( 49 72 ) 1
+( 49 80 ) 1
+( 57 76 ) 1
+( 57 78 ) 1
+
+All functions so far placed in the building with fraction:
+( 49 71 ) 0.908411
+( 49 72 ) 1
+( 12 73 ) 1
+( 12 74 ) 1
+( 10 75 ) 1
+( 10 76 ) 0.42311
+( 57 76 ) 0.393373
+( 10 77 ) 1
+( 57 78 ) 1
+( 12 79 ) 0.265981
+( 23 79 ) 0.296449
+( 49 80 ) 1
+( 5 81 ) 0.966729
+( 5 82 ) 1
+( 5 83 ) 1
+( 23 84 ) 1
+
+ Run time: 1.104
+
+Objective value: 0
+
+Centres locked to locations (Function) Node:
+
+Functions placed in locations (Functions, Nodes) 1:
+
+All functions so far placed in the building with fraction:
+
+ Run time: 1.094
+
+Objective value: 0
+
+Centres locked to locations (Function) Node:
+
+Functions placed in locations (Functions, Nodes) 1:
+
+All functions so far placed in the building with fraction:
+
+ Run time: 3.306
+
+Objective value: 13659
+
+Centres locked to locations (Function) Node:
+( 4 ) 72
+( 13 ) 75
+( 20 ) 84
+( 23 ) 71
+( 28 ) 83
+( 30 ) 78
+( 43 ) 73
+( 56 ) 77
+
+Functions placed in locations (Functions, Nodes) 1:
+( 4 72 ) 1
+( 13 75 ) 1
+( 20 79 ) 1
+( 20 84 ) 1
+( 23 71 ) 1
+( 28 80 ) 1
+( 28 81 ) 1
+( 28 82 ) 1
+( 28 83 ) 1
+( 30 73 ) 1
+( 30 78 ) 1
+( 43 73 ) 1
+( 56 74 ) 1
+( 56 75 ) 1
+( 56 77 ) 1
+
+All functions so far placed in the building with fraction:
+( 23 71 ) 0.571843
+( 4 72 ) 0.917271
+( 30 73 ) 0.510943
+( 43 73 ) 0.475472
+( 56 74 ) 0.581684
+( 13 75 ) 0.913208
+( 56 75 ) 0.0867925
+( 56 77 ) 1
+( 30 78 ) 1
+( 20 79 ) 0.556226
+( 28 80 ) 1
+( 28 81 ) 0.964151
+( 28 82 ) 1
+( 28 83 ) 1
+( 20 84 ) 1
+
+ Run time: 3.227
+
+Objective value: 13659
+
+Centres locked to locations (Function) Node:
+( 4 ) 72
+( 13 ) 75
+( 20 ) 84
+( 23 ) 71
+( 28 ) 83
+( 30 ) 78
+( 43 ) 73
+( 56 ) 77
+
+Functions placed in locations (Functions, Nodes) 1:
+( 4 72 ) 1
+( 13 75 ) 1
+( 20 79 ) 1
+( 20 84 ) 1
+( 23 71 ) 1
+( 28 80 ) 1
+( 28 81 ) 1
+( 28 82 ) 1
+( 28 83 ) 1
+( 30 73 ) 1
+( 30 78 ) 1
+( 43 73 ) 1
+( 56 74 ) 1
+( 56 75 ) 1
+( 56 77 ) 1
+
+All functions so far placed in the building with fraction:
+( 23 71 ) 0.571843
+( 4 72 ) 0.917271
+( 30 73 ) 0.510943
+( 43 73 ) 0.475472
+( 56 74 ) 0.581684
+( 13 75 ) 0.913208
+( 56 75 ) 0.0867925
+( 56 77 ) 1
+( 30 78 ) 1
+( 20 79 ) 0.556226
+( 28 80 ) 1
+( 28 81 ) 0.964151
+( 28 82 ) 1
+( 28 83 ) 1
+( 20 84 ) 1
+
+ Run time: 3.261
+
+Objective value: 13659
+
+Centres locked to locations (Function) Node:
+( 4 ) 72
+( 13 ) 75
+( 20 ) 84
+( 23 ) 71
+( 28 ) 83
+( 30 ) 78
+( 43 ) 73
+( 56 ) 77
+
+Functions placed in locations (Functions, Nodes) 1:
+( 4 72 ) 1
+( 13 75 ) 1
+( 20 79 ) 1
+( 20 84 ) 1
+( 23 71 ) 1
+( 28 80 ) 1
+( 28 81 ) 1
+( 28 82 ) 1
+( 28 83 ) 1
+( 30 73 ) 1
+( 30 78 ) 1
+( 43 73 ) 1
+( 56 74 ) 1
+( 56 75 ) 1
+( 56 77 ) 1
+
+All functions so far placed in the building with fraction:
+( 23 71 ) 0.571843
+( 4 72 ) 0.917271
+( 30 73 ) 0.510943
+( 43 73 ) 0.475472
+( 56 74 ) 0.581684
+( 13 75 ) 0.913208
+( 56 75 ) 0.0867925
+( 56 77 ) 1
+( 30 78 ) 1
+( 20 79 ) 0.556226
+( 28 80 ) 1
+( 28 81 ) 0.964151
+( 28 82 ) 1
+( 28 83 ) 1
+( 20 84 ) 1
+
